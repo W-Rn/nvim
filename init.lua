@@ -1,0 +1,14 @@
+-- 基础设置
+require "config.options"
+-- 快捷键映射
+require "config.keymaps"
+-- lazy
+require "config.lazy"
+-- 自动加载
+require "config.autocmds"
+-- 启动LSP
+require "config.lsp-setup"
+-- 折叠
+require "config.folding"
+-- run
+require "config.run"
