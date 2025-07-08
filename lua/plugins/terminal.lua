@@ -3,8 +3,11 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     cmd = { "ToggleTerm", "TermExec" },
+    keys = { "<A-\\>" },
     opts = {
-      shade_terminals = true,
+      size = 80,
+      open_mapping = [[<A-\>]],
+      direction = "vertical",
     },
   },
 }
