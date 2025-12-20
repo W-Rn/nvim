@@ -48,4 +48,9 @@ return {
     submodules = false,
     opts = {},
   },
+  {
+    "sphamba/smear-cursor.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
