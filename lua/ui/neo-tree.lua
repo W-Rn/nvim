@@ -10,6 +10,15 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
+  init = function()
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "LoadTheme",
+      callback = function()
+        vim.api.nvim_set_hl(0, "NeoTreeVertSplit", { link = "WinSeparator" })
+        vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { link = "WinSeparator" })
+      end,
+    })
+  end,
   config = function()
     require("neo-tree").setup {
       close_if_last_window = true, -- 当只剩文件树窗口时自动退出

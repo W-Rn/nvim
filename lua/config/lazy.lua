@@ -42,7 +42,7 @@ require("lazy").setup {
     require "lspconfig.include",
   },
 
-  install = { colorscheme = { "tokyonight" }, autoUpdate = false, missing = false },
+  install = { colorscheme = { "habamax" }, autoUpdate = false, missing = false },
   --install = { colorscheme = { "tokyonight"},},
   -- automatically check for plugin updates
   checker = { enabled = false },

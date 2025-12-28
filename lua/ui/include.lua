@@ -1,6 +1,6 @@
 -- Include ui modules
 return {
-  require "ui.theme",
+  require "ui.catppuccin",
   require "ui.bufferline",
   require "ui.lualine",
   require "ui.edgy",

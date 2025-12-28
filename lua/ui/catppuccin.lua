@@ -37,32 +37,10 @@ return {
       vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
       vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#00BFFF" })
       vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none", fg = "#FCA561" })
+      vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#00BFFF" })
       vim.api.nvim_exec_autocmds("User", {
         pattern = "LoadTheme",
       })
     end,
-  },
-
-  {
-    "folke/tokyonight.nvim",
-    priority = 1000,
-    lazy = true,
-    opts = {
-      style = "moon",
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-    -- config = function()
-    --   vim.cmd.colorscheme "tokyonight"
-    --   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    --   vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#00BFFF" })
-    --   vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none", fg = "#FCA561" })
-    --   vim.api.nvim_exec_autocmds("User", {
-    --     pattern = "LoadTheme",
-    --   })
-    -- end,
   },
 }
