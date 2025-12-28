@@ -34,6 +34,9 @@ return {
     config = function(_, opts)
       require("catppuccin").setup(opts)
       vim.cmd.colorscheme "catppuccin"
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#00BFFF" })
+      vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none", fg = "#FCA561" })
       vim.api.nvim_exec_autocmds("User", {
         pattern = "LoadTheme",
       })
@@ -54,6 +57,9 @@ return {
     },
     -- config = function()
     --   vim.cmd.colorscheme "tokyonight"
+    --   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    --   vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#00BFFF" })
+    --   vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none", fg = "#FCA561" })
     --   vim.api.nvim_exec_autocmds("User", {
     --     pattern = "LoadTheme",
     --   })
