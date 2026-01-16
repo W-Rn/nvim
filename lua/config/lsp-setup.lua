@@ -20,19 +20,19 @@ vim.diagnostic.config {
     },
   },
 }
-local hover = function()
-  vim.lsp.buf.hover {
-    border = "single",
-    max_width = 100,
-  }
-end
-local signature_help = function()
-  vim.lsp.buf.signature_help {
-    border = "single",
-    max_width = 100,
-    title_pos = "left",
-  }
-end
+-- local hover = function()
+--   vim.lsp.buf.hover {
+--     border = "rounded",
+--     max_width = 100,
+--   }
+-- end
+-- local signature_help = function()
+--   vim.lsp.buf.signature_help {
+--     border = "rounded",
+--     max_width = 100,
+--     title_pos = "left",
+--   }
+-- end
 
 -- 设置 LSP 快捷键
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -69,10 +69,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keymap("n", "<leader>gr", vim.lsp.buf.references, "LSP :References")
     --
     keymap("n", "<leader>d", vim.diagnostic.open_float, "LSP : Diagnostic Float")
-    keymap("n", "<leader>gk", hover, "LSP : Hover")
+    keymap("n", "<leader>gk", vim.lsp.buf.hover, "LSP : Hover")
     keymap("n", "<leader>rn", vim.lsp.buf.rename, "LSP :Rename")
     keymap({ "n", "x" }, "<leader>ga", vim.lsp.buf.code_action, "LSP :Code Action")
-    keymap({ "n", "i" }, "<C-s>", signature_help, "LSP :Signature Help")
+    keymap({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, "LSP :Signature Help")
     -- stylua: ignore
     keymap("n", "<leader>gd", Snacks.picker.lsp_definitions, "Goto Definition" )
     keymap("n", "<leader>gD", Snacks.picker.lsp_declarations, "Goto Declaration")

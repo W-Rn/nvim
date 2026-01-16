@@ -63,8 +63,16 @@ return {
         preset = "default",
       },
       layouts = {
-        ivy_split = { layout = { border = "rounded" } },
-        default = { layout = { width = 0.9, height = 0.9 } },
+
+        default = {
+          layout = { width = 0.9, height = 0.9 },
+        },
+        select = {
+          layout = {
+            width = 0.6,
+            height = 0.6,
+          },
+        },
       },
       win = {
         preview = {
@@ -89,10 +97,10 @@ return {
     },
     -- stylua: ignore
     styles = {
-      notification_history = { border = "single", width = 0.8, height = 0.8, minimal = true },
+      notification_history = { border = "rounded", width = 0.8, height = 0.8, minimal = true },
       input = { title_pos = "left", height = 1, width = 50, relative = "cursor", row = -3, col = 0 },
-      terminal = { relative = "editor", border = "single", position = "float", backdrop = 60, height = 0.85, width = 0.9, zindex = 50},
-      scratch = { border = "single", width = 0.8, height = 0.8 ,minimal = false },
+      terminal = { relative = "editor", border = "rounded", position = "float", backdrop = 60, height = 0.85, width = 0.9, zindex = 50},
+      scratch = { border = "rounded", width = 0.8, height = 0.8 ,minimal = false },
       {},
     },
   },
@@ -102,7 +110,6 @@ return {
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "[Snacks] Delete Buffer" },
     { "<leader>bD", function() Snacks.bufdelete.other() end, desc = "[Snacks] Delete Other Buffers" },
     { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "[Snacks] Notification history" },
-    { "<leader>sn", function() Snacks.picker.notifications() end, desc = "[Snacks] Notification History" },
     -- find
     { "<leader>fb", function() Snacks.picker.buffers() end, desc = "[Snacks] Find Buffers Files"},
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "[Snacks] Find Nvim Config File" },
@@ -110,7 +117,6 @@ return {
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "[Snacks] Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "[Snacks] Recent" },
     { "<leader>ft", function() Snacks.picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME', 'HACK' }} end, desc = "[Snacks] Todo/Fix/Fixme" },
-    { "<leader>fl", function() Snacks.picker.lines({ layout = "ivy_split"} ) end, desc = "[Snacks] Find Buffer Lines" },
     -- git
     { "<leader>sgb", function() Snacks.picker.git_branches() end, desc = "[Snacks] Git Branches" },
     -- Grep
@@ -119,9 +125,8 @@ return {
     { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "[Snacks] Grep Visual selection or word", mode = { "n", "x" } },
     -- search
     { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "[Snacks] Autocmds" },
-    { "<leader>sh", function() Snacks.picker.help() end, desc = "[Snacks] Help Pages" },
+    { "<leader>sh", function() Snacks.picker.help( { layout = "select" } ) end, desc = "[Snacks] Help Pages" },
     { "<leader>sH", function() Snacks.picker.highlights() end, desc = "[Snacks] Highlights" },
-    { "<leader>sj", function() Snacks.picker.jumps() end, desc = "[Snacks] Jumps" },
     { "<leader>sk", function() Snacks.picker.keymaps( { layout = "select" } ) end, desc = "[Snacks] Keymaps" },
     { "<leader>sc", function() Snacks.picker.colorschemes({ layout = 'select' }) end, desc = "[Snacks] Colorschemes" },
     { "<leader>sm", function() Snacks.picker.marks() end, desc = "[Snacks] Marks" },
@@ -131,9 +136,6 @@ return {
     { "<leader>.",  function() Snacks.scratch() end, desc = "[Snacks] Toggle Scratch Buffer" },
     { "<leader>S",  function() Snacks.scratch.select() end, desc = "[Snacks] Select Scratch Buffer" },
     { "<A-i>",      function() Snacks.terminal() end, desc = "[Snacks] Toggle terminal", mode = {"n",  "t"} },
-    -- lsp
-    { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "[Snacks] Diagnostics" },
-    { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "[Snacks] Buffer Diagnostics" },
     -- { "<c-g>",      function() Snacks.lazygit() end, desc = "[Snacks] Buffer Diagnostics" },
   },
   config = function(_, opts)

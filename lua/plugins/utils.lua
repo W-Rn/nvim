@@ -10,9 +10,24 @@ return {
   },
   {
     "nvzone/showkeys",
-    event = "VeryLazy",
+    cmd = "ShowkeysToggle",
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "LoadTheme",
+        callback = function()
+          vim.api.nvim_set_hl(0, "ShowkeysBorder", { fg = "#80A0FF", bg = "none" })
+          vim.api.nvim_set_hl(0, "showkeysNormal", { fg = "none", bg = "none" })
+          vim.api.nvim_set_hl(0, "SkInactive", { fg = "#7F848E", bg = "none" })
+          vim.api.nvim_set_hl(0, "SkActive", { fg = "#FFFFFF", bg = "none" })
+        end,
+      })
+    end,
     opts = {
       maxkeys = 5,
+      winopts = {
+        border = "rounded",
+      },
+      winhl = "FloatBorder:ShowkeysBorder,Normal:showkeysNormal",
     },
   },
   {
