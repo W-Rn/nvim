@@ -9,7 +9,6 @@ return {
       ensure_installed = {
         "lua-language-server", -- Lua
         "stylua", -- Lua 格式化
-        "shellcheck", -- Shell 检查
       },
     },
     config = function(_, opts)

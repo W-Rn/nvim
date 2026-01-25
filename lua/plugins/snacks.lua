@@ -99,7 +99,7 @@ return {
     styles = {
       notification_history = { border = "rounded", width = 0.8, height = 0.8, minimal = true },
       input = { title_pos = "left", height = 1, width = 50, relative = "cursor", row = -3, col = 0 },
-      terminal = { relative = "editor", border = "rounded", position = "float", backdrop = 60, height = 0.85, width = 0.9, zindex = 50},
+      terminal = { relative = "editor", border = "rounded", position = "float", backdrop = 60, height = 0.9, width = 0.8, zindex = 50},
       scratch = { border = "rounded", width = 0.8, height = 0.8 ,minimal = false },
       {},
     },

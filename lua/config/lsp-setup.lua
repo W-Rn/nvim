@@ -3,6 +3,7 @@ vim.lsp.enable "lua_ls"
 vim.lsp.enable "clangd"
 vim.lsp.enable "pyright"
 vim.lsp.enable "jsonls"
+vim.lsp.enable "bashls"
 
 vim.diagnostic.config {
   update_in_insert = false,
@@ -20,19 +21,6 @@ vim.diagnostic.config {
     },
   },
 }
--- local hover = function()
---   vim.lsp.buf.hover {
---     border = "rounded",
---     max_width = 100,
---   }
--- end
--- local signature_help = function()
---   vim.lsp.buf.signature_help {
---     border = "rounded",
---     max_width = 100,
---     title_pos = "left",
---   }
--- end
 
 -- 设置 LSP 快捷键
 vim.api.nvim_create_autocmd("LspAttach", {

@@ -1,26 +1,14 @@
 local runners = {
   c = function()
-    -- vim.cmd "split"
-    -- vim.cmd "resize 100"
-    -- vim.cmd "term gcc % -o %< && ./%< && rm -f ./%<"
     vim.cmd 'TermExec cmd="gcc % -o %< && ./%< && rm -f ./%<" go_back=0'
   end,
   cpp = function()
-    -- vim.cmd "split"
-    -- vim.cmd "resize 100"
-    -- vim.cmd "term g++ -w % -std=c++17 -O2 -g -Wall -o %< && ./%< && rm -f ./%<"
     vim.cmd 'TermExec cmd="g++ -w % -std=c++17 -O2 -g -Wall -o %< && ./%< && rm -f ./%<" go_back=0'
   end,
   -- markdown = function()
   --   vim.cmd "MarkdownPreview"
   -- end,
   python = function()
-    -- vim.cmd "split"
-    -- vim.cmd "set nonumber"
-    -- vim.cmd "set norelativenumber"
-    -- vim.cmd "resize 10"
-    -- vim.cmd "term python3 %"
-    -- vim.cmd 'TermExec cmd="python3 %"'
     vim.cmd 'TermExec cmd="python3 %" go_back=0'
   end,
 }

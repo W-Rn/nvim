@@ -12,9 +12,7 @@ return {
           cpp = { "clang-format" },
           c = { "clang-format" },
           json = { "prettierd" },
-          -- ["*"] = { "codespell" },
-          --javascript = { "prettier" },
-          -- markdown = { "prettier" },
+          sh = { "shfmt" },
         },
         -- 设置保存文件时自动格式化
         format_on_save = {
