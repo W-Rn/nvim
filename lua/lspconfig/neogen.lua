@@ -2,15 +2,7 @@ return {
   {
     "danymat/neogen",
     cmd = "Neogen",
-    keys = {
-      {
-        "<leader>cn",
-        function()
-          require("neogen").generate()
-        end,
-        desc = "Generate Annotations (Neogen)",
-      },
-    },
+    event = "LspAttach",
     config = function()
       require("neogen").setup {
         enabled = true,
@@ -27,9 +19,17 @@ return {
           },
         },
       }
-      local opts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap("i", "<C-n>", "<cmd>lua require('neogen').jump_next()<CR>", opts)
-      vim.api.nvim_set_keymap("i", "<C-p>", "<cmd>lua require('neogen').jump_prev()<CR>", opts)
+      local function keymap(mode, lhs, rhs, desc)
+        vim.keymap.set(mode, lhs, rhs, {
+          noremap = true,
+          silent = true,
+          desc = desc,
+        })
+      end
+
+      keymap("i", "<C-n>", "<cmd>lua require('neogen').jump_next()<CR>", "Neogen: Jump to next placeholder")
+      keymap("i", "<C-p>", "<cmd>lua require('neogen').jump_prev()<CR>", "Neogen: Jump to previous placeholder")
+      keymap("n", "<leader>cn", "<cmd>lua require('neogen').generate()<CR>", "Neogen: Generate documentation")
     end,
   },
 }

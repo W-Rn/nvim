@@ -12,8 +12,8 @@ return {
     sections = {
       lualine_c = { "" },
       lualine_x = { "lsp_status" },
-      -- lualine_y = { "encoding", "fileformat", "filetype", "progress" },
-      lualine_y = { "filetype", "progress" },
+      lualine_y = { "encoding", "fileformat", "filetype", "progress" },
+      -- lualine_y = { "filetype", "progress" },
     },
   },
   config = function(_, opts)
