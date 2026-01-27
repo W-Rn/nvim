@@ -12,8 +12,8 @@ return {
     sections = {
       lualine_c = { "" },
       lualine_x = { "lsp_status" },
-      lualine_y = { "encoding", "fileformat", "filetype", "progress" },
-      -- lualine_y = { "filetype", "progress" },
+      -- lualine_y = { "encoding", "fileformat", "filetype", "progress" },
+      lualine_y = { "filetype", "progress" },
     },
   },
   config = function(_, opts)
@@ -48,6 +48,15 @@ return {
       return " " .. vim.fn.fnamemodify(root, ":t")
     end
 
+    -- local function venv_dir()
+    --   local venv = require("venv-selector").venv()
+    --   if venv then
+    --     return "🐍 " .. vim.fn.fnamemodify(venv, ":t")
+    --   end
+    --   return ""
+    -- end
+    --
+    -- table.insert(opts.sections.lualine_c, 2, venv_dir)
     table.insert(opts.sections.lualine_c, 1, lsp_root_component)
     table.insert(opts.sections.lualine_x, 1, macro_recording)
     require("lualine").setup(opts)

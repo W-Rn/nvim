@@ -1,18 +1,31 @@
 return {
   {
     "linux-cultist/venv-selector.nvim",
-    dependencies = {
-      { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
-    },
     ft = "python",
-    opts = { -- this can be an empty lua table - just showing below for clarity.
-      search = {}, -- if you add your own searches, they go here.
-      options = {}, -- if you add plugin options, they go here.
+    opts = {
+      search = {
+        python = {
+          command = "$FD '/python3$' /usr/bin/ --full-path --color never",
+        },
+      },
+      options = {
+        picker = "snacks",
+        -- enable_default_searches = false,
+      },
     },
     config = function(_, opts)
       require("venv-selector").setup(opts)
       -- stylua: ignore
       vim.keymap.set("n", "<leader>vs", "<Cmd>VenvSelect<CR>", { silent = true, noremap = true, buffer = true, desc = "Select VirtualEnv" })
+      -- vim.keymap.set("n", "<leader>vp", function()
+      --   local python = require("venv-selector").python()
+      --   if python then
+      --     print("Current Python: " .. python)
+      --   else
+      --     print "No virtual environment selected"
+      --     vim.cmd "VenvSelect"
+      --   end
+      -- end, { desc = "Show current Python or select venv" })
     end,
   },
   {
