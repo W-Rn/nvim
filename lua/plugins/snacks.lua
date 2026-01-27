@@ -69,7 +69,7 @@ return {
         },
         select = {
           layout = {
-            width = 0.6,
+            width = 0.5,
             height = 0.6,
           },
         },

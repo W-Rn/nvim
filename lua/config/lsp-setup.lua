@@ -10,7 +10,7 @@ vim.diagnostic.config {
   virtual_text = { spacing = 2, prefix = "●" },
   severity_sort = true,
   float = {
-    border = "single",
+    border = "rounded",
   },
   signs = {
     text = {
