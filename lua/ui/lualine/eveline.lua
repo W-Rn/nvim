@@ -1,20 +1,29 @@
 local M = {}
 function M.setup()
   local lualine = require "lualine"
+  local c = require("catppuccin.palettes").get_palette "mocha"
   -- stylua: ignore
   local colors = {
-    -- bg        = "#202328",
+    -- bg        = c.mantle,
     bg        = "none",
-    fg        = "#bbc2cf",
-    yellow    = "#ECBE7B",
-    cyan      = "#008080",
-    darkblue  = "#081633",
-    green     = "#98be65",
-    orange    = "#FF8800",
-    violet    = "#a9a1e1",
-    magenta   = "#c678dd",
-    blue      = "#51afef",
-    red       = "#ec5f67",
+    fg        = c.text,
+    yellow    = c.yellow,
+    cyan      = c.teal,
+    darkblue  = c.surface0,
+    green     = c.green,
+    orange    = c.peach,
+    violet    = c.mauve,
+    magenta   = c.pink,
+    blue      = c.blue,
+    red       = c.red,
+    bg_text   = "#333333"
+  }
+
+  local separators = {
+    left = "",
+    right = "",
+    theme_left = "",
+    theme_right = "",
   }
 
   local conditions = {
@@ -75,7 +84,8 @@ function M.setup()
 
   ins_left {
     function()
-      return "▊"
+      -- return "▊"
+      return separators.theme_left
     end,
     color = { fg = colors.blue }, -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
@@ -111,16 +121,18 @@ function M.setup()
         ["!"] = colors.red,
         t = colors.red,
       }
-      return { fg = mode_color[vim.fn.mode()], gui = "bold" }
+      return { fg = colors.bg_text, bg = mode_color[vim.fn.mode()], gui = "bold" }
     end,
-    padding = { right = 1 },
+    separator = { left = separators.left, right = separators.right },
+    padding = { right = 0 },
   }
 
   ins_left {
     "branch",
     icon = "",
-    color = { fg = colors.violet, gui = "bold" },
-    padding = { left = 1, right = 1 },
+    color = { fg = colors.bg_text, bg = colors.violet, gui = "bold" },
+    padding = { left = 1, right = 0 },
+    separator = { left = separators.left, right = separators.right },
   }
 
   ins_left {
@@ -138,7 +150,9 @@ function M.setup()
       end
       return " " .. vim.fn.fnamemodify(root, ":t")
     end,
-    color = { fg = colors.violet, gui = "bold" },
+    color = { fg = colors.bg_text, bg = colors.magenta, gui = "bold" },
+    padding = { left = 1, right = 0 },
+    separator = { left = separators.left, right = separators.right },
   }
 
   ins_left {
@@ -175,11 +189,11 @@ function M.setup()
   ins_left {
     -- Lsp server name .
     function()
-      local msg = "No Active Lsp"
+      -- local msg = "No Active Lsp"
       local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
       local clients = vim.lsp.get_clients()
       if next(clients) == nil then
-        return msg
+        return ""
       end
       for _, client in ipairs(clients) do
         ---@diagnostic disable-next-line: undefined-field
@@ -188,11 +202,14 @@ function M.setup()
           return client.name
         end
       end
-      return msg
+      return ""
     end,
-    icon = " LSP:",
-    color = { fg = "#ffffff", gui = "bold" },
+    icon = "⚙",
+    color = { fg = colors.bg_text, bg = colors.green, gui = "bold" },
+    padding = { left = 0, right = 0 },
+    separator = { left = "", right = "" },
   }
+
   ins_right {
     function()
       local recording_register = vim.fn.reg_recording()
@@ -203,7 +220,7 @@ function M.setup()
       end
     end,
 
-    color = { fg = "#333333", bg = colors.yellow },
+    color = { fg = colors.bg_text, bg = colors.yellow, gui = "bold" },
     separator = { left = "", right = "" },
     padding = 0,
   }
@@ -246,18 +263,18 @@ function M.setup()
   ins_right {
     "progress",
     color = { fg = colors.fg, gui = "bold" },
-    padding = { left = 0, right = 1 },
+    padding = { left = 0, right = 0 },
   }
 
   ins_right {
     function()
-      return "▊"
+      -- return "▊"
+      return separators.theme_right
     end,
     color = { fg = colors.blue },
-    padding = { left = 0 },
+    padding = { left = 0, right = 1 },
   }
 
-  -- Now don't forget to initialize lualine
   lualine.setup(opts)
 end
 return M
