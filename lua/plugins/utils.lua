@@ -1,7 +1,8 @@
 return {
   {
     "NvChad/nvim-colorizer.lua",
-    ft = { "lua", "html", "xml", "python", "lua", "kitty", "tmux", "toml", "i3config" },
+    -- ft = { "sh", "lua", "html", "xml", "python", "lua", "kitty", "tmux", "toml", "i3config" },
+    event = { "BufReadPost", "BufNewFile", "VimEnter" },
     opts = {
       user_default_options = {
         names = false,
