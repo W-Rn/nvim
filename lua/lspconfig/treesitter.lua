@@ -3,7 +3,7 @@ return {
   enabled = true,
   branch = "master",
   lazy = false,
-  build = ":TSUpdate",
+  -- build = ":TSUpdate",
   opts_extend = { "ensure_installed" },
   opts = {
     auto_install = true, -- 自动安装缺失的解析器

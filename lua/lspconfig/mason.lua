@@ -1,8 +1,9 @@
 return {
   {
     "mason-org/mason.nvim",
-    event = { "BufReadPost", "BufNewFile", "VimEnter" },
-    build = ":MasonUpdate",
+    -- event = { "BufReadPost", "BufNewFile", "VimEnter" },
+    lazy = false,
+    -- build = ":MasonUpdate",
     opts_extend = { "ensure_installed" },
     opts = {
       ui = { border = "rounded" },
