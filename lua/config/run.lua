@@ -26,7 +26,7 @@ local function enhanced_run()
   end
 end
 
-vim.keymap.set("n", "<F36>", enhanced_run, {
+vim.keymap.set("n", "<F12>", enhanced_run, {
   silent = true,
   desc = "󰐅 智能运行当前文件",
 })
