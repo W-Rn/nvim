@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup {
   ui = {
     -- 核心样式配置
-    border = "double", -- 边框样式：rounded（圆角）/ single（单线）/ double（双线）/ none
+    border = "rounded", -- 边框样式：rounded（圆角）/ single（单线）/ double（双线）/ none
     title = " Lazy Plugin Manager ", -- 标题文字
     title_pos = "center", -- 标题位置：left/center/right
   },

@@ -22,8 +22,10 @@ function M.setup()
   local separators = {
     left = "",
     right = "",
-    theme_left = "",
-    theme_right = "",
+    -- theme_left = "",
+    -- theme_right = "",
+    theme_left = "",
+    theme_right = "",
   }
 
   local conditions = {
@@ -88,7 +90,7 @@ function M.setup()
       return separators.theme_left
     end,
     color = { fg = colors.blue }, -- Sets highlighting of component
-    padding = { left = 0, right = 1 }, -- We don't need space before this
+    padding = { left = 0, right = 0 }, -- We don't need space before this
   }
 
   ins_left {
@@ -123,8 +125,8 @@ function M.setup()
       }
       return { fg = colors.bg_text, bg = mode_color[vim.fn.mode()], gui = "bold" }
     end,
-    separator = { left = separators.left, right = separators.right },
-    padding = { right = 0 },
+    separator = { left = "", right = separators.right },
+    padding = { left = 1, right = 0 },
   }
 
   ins_left {
@@ -156,37 +158,6 @@ function M.setup()
   }
 
   ins_left {
-    "diff",
-    -- Is it me or the symbol for modified us really weird
-    symbols = { added = " ", modified = "󰝤 ", removed = " " },
-    diff_color = {
-      added = { fg = colors.green },
-      modified = { fg = colors.orange },
-      removed = { fg = colors.red },
-    },
-    cond = conditions.hide_in_width,
-  }
-
-  ins_left {
-    "diagnostics",
-    sources = { "nvim_diagnostic" },
-    symbols = { error = " ", warn = " ", info = " " },
-    diagnostics_color = {
-      error = { fg = colors.red },
-      warn = { fg = colors.yellow },
-      info = { fg = colors.cyan },
-    },
-  }
-
-  -- Insert mid section. You can make any number of sections in neovim :)
-  -- for lualine it's any number greater then 2
-  ins_left {
-    function()
-      return "%="
-    end,
-  }
-
-  ins_left {
     -- Lsp server name .
     function()
       -- local msg = "No Active Lsp"
@@ -204,11 +175,44 @@ function M.setup()
       end
       return ""
     end,
-    icon = "⚙",
+    -- icon = "⚙",
     color = { fg = colors.bg_text, bg = colors.green, gui = "bold" },
-    padding = { left = 0, right = 0 },
-    separator = { left = "", right = "" },
+    padding = { left = 1, right = 0 },
+    separator = { left = separators.left, right = separators.right },
   }
+
+  ins_left {
+    "diff",
+    -- Is it me or the symbol for modified us really weird
+    symbols = { added = " ", modified = "󰝤 ", removed = " " },
+    diff_color = {
+      added = { fg = colors.green },
+      modified = { fg = colors.orange },
+      removed = { fg = colors.red },
+    },
+    cond = conditions.hide_in_width,
+    padding = { left = 2, right = 0 },
+  }
+
+  ins_left {
+    "diagnostics",
+    sources = { "nvim_diagnostic" },
+    symbols = { error = " ", warn = " ", info = " " },
+    diagnostics_color = {
+      error = { fg = colors.red },
+      warn = { fg = colors.yellow },
+      info = { fg = colors.cyan },
+    },
+  }
+
+  -- Insert mid section. You can make any number of sections in neovim :)
+  -- for lualine it's any number greater then 2
+
+  -- ins_left {
+  --   function()
+  --     return "%="
+  --   end,
+  -- }
 
   ins_right {
     function()
@@ -221,7 +225,7 @@ function M.setup()
     end,
 
     color = { fg = colors.bg_text, bg = colors.yellow, gui = "bold" },
-    separator = { left = "", right = "" },
+    separator = { left = separators.left, right = separators.right },
     padding = 0,
   }
 
@@ -240,20 +244,6 @@ function M.setup()
     color = { fg = colors.green, gui = "bold" },
   }
 
-  ins_right {
-    "filename",
-    cond = conditions.buffer_not_empty,
-    color = { fg = colors.magenta, gui = "bold" },
-  }
-
-  ins_right {
-    -- filesize component
-    "filesize",
-    cond = conditions.buffer_not_empty,
-    color = { fg = colors.fg, gui = "bold" },
-    padding = { left = 1, right = 1 },
-  }
-
   -- ins_right {
   --   "location",
   --   color = { fg = colors.fg, gui = "bold" },
@@ -263,7 +253,21 @@ function M.setup()
   ins_right {
     "progress",
     color = { fg = colors.fg, gui = "bold" },
-    padding = { left = 0, right = 0 },
+    padding = { left = 1, right = 1 },
+  }
+
+  ins_right {
+    -- filesize component
+    "filesize",
+    cond = conditions.buffer_not_empty,
+    color = { fg = colors.fg, gui = "bold" },
+    padding = { left = 1, right = 1 },
+  }
+  ins_right {
+    "filename",
+    cond = conditions.buffer_not_empty,
+    color = { fg = colors.magenta, gui = "bold" },
+    padding = { left = 1, right = 0 },
   }
 
   ins_right {
