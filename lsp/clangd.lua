@@ -1,21 +1,21 @@
 return {
-  capabilities = {
-    textDocument = {
-      completion = {
-        editsNearCursor = true,
-      },
+    capabilities = {
+        textDocument = {
+            completion = {
+                editsNearCursor = true,
+            },
+        },
+        offsetEncoding = { "utf-8", "utf-16" },
     },
-    offsetEncoding = { "utf-8", "utf-16" },
-  },
-  cmd = { "clangd" },
-  filetypes = { "c", "cpp" },
-  root_markers = {
-    ".clangd",
-    ".clang-tidy",
-    ".clang-format",
-    "compile_commands.json",
-    "compile_flags.txt",
-    "configure.ac", -- AutoTools
-  },
-  single_file_support = true,
+    cmd = { "clangd" },
+    filetypes = { "c", "cpp" },
+    root_markers = {
+        ".clangd",
+        ".clang-tidy",
+        ".clang-format",
+        "compile_commands.json",
+        "compile_flags.txt",
+        "configure.ac", -- AutoTools
+    },
+    single_file_support = true,
 }

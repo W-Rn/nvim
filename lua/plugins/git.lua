@@ -1,35 +1,35 @@
 return {
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("gitsigns").setup {
-        signs = {
-          add = { text = "▎" },
-          change = { text = "▎" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "▎" },
-          untracked = { text = "▎" },
-        },
-        signs_staged = {
-          add = { text = "▎" },
-          change = { text = "▎" },
-          delete = { text = "" },
-          topdelete = { text = "" },
-          changedelete = { text = "▎" },
-        },
-      }
-    end,
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    keys = { "<c-g>" },
-    config = function()
-      vim.g.lazygit_floating_window_scaling_factor = 1.0
-      vim.g.lazygit_floating_window_winblend = 0
-      vim.g.lazygit_use_neovim_remote = true
-      vim.keymap.set("n", "<c-g>", ":LazyGit<CR>", { noremap = true, silent = true })
-    end,
-  },
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("gitsigns").setup {
+                signs = {
+                    add = { text = "▎" },
+                    change = { text = "▎" },
+                    delete = { text = "" },
+                    topdelete = { text = "" },
+                    changedelete = { text = "▎" },
+                    untracked = { text = "▎" },
+                },
+                signs_staged = {
+                    add = { text = "▎" },
+                    change = { text = "▎" },
+                    delete = { text = "" },
+                    topdelete = { text = "" },
+                    changedelete = { text = "▎" },
+                },
+            }
+        end,
+    },
+    {
+        "kdheepak/lazygit.nvim",
+        keys = { "<c-g>" },
+        config = function()
+            vim.g.lazygit_floating_window_scaling_factor = 1.0
+            vim.g.lazygit_floating_window_winblend = 0
+            vim.g.lazygit_use_neovim_remote = true
+            vim.keymap.set("n", "<c-g>", ":LazyGit<CR>", { noremap = true, silent = true })
+        end,
+    },
 }

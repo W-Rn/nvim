@@ -29,30 +29,30 @@ vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>", { noremap = true, sile
 
 -- mark
 for c = string.byte "a", string.byte "z" do
-  local key = string.char(c)
-  vim.keymap.set("n", "m" .. key, function()
-    return "m" .. key .. "<Cmd>redrawstatus<CR>"
-  end, { expr = true, noremap = true })
+    local key = string.char(c)
+    vim.keymap.set("n", "m" .. key, function()
+        return "m" .. key .. "<Cmd>redrawstatus<CR>"
+    end, { expr = true, noremap = true })
 end
 
 for c = string.byte "A", string.byte "Z" do
-  local key = string.char(c)
-  vim.keymap.set("n", "m" .. key, function()
-    return "m" .. key .. "<Cmd>redrawstatus<CR>"
-  end, { expr = true, noremap = true })
+    local key = string.char(c)
+    vim.keymap.set("n", "m" .. key, function()
+        return "m" .. key .. "<Cmd>redrawstatus<CR>"
+    end, { expr = true, noremap = true })
 end
 
 for c = string.byte "a", string.byte "z" do
-  local key = string.char(c)
-  vim.keymap.set("n", "dm" .. key, function()
-    vim.cmd("delmarks " .. key)
-    vim.cmd "redrawstatus"
-  end, { noremap = true })
+    local key = string.char(c)
+    vim.keymap.set("n", "dm" .. key, function()
+        vim.cmd("delmarks " .. key)
+        vim.cmd "redrawstatus"
+    end, { noremap = true })
 end
 for c = string.byte "A", string.byte "Z" do
-  local key = string.char(c)
-  vim.keymap.set("n", "dm" .. key, function()
-    vim.cmd("delmarks " .. key)
-    vim.cmd "redrawstatus"
-  end, { noremap = true })
+    local key = string.char(c)
+    vim.keymap.set("n", "dm" .. key, function()
+        vim.cmd("delmarks " .. key)
+        vim.cmd "redrawstatus"
+    end, { noremap = true })
 end
