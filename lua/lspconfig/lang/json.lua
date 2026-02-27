@@ -13,6 +13,8 @@ return {
             ensure_installed = {
                 "json-lsp",
                 "prettierd",
+                "jq",
+                "fixjson",
             },
         },
     },

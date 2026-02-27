@@ -11,7 +11,9 @@ return {
                     python = { "isort", "black" },
                     cpp = { "clang-format" },
                     c = { "clang-format" },
-                    json = { "prettierd" },
+                    -- json = { "prettierd" },
+                    -- json = { "fixjson", "--indent", "4" },
+                    json = { "jq", "--indent", "4" },
                     sh = { "shfmt" },
                 },
                 -- 设置保存文件时自动格式化
