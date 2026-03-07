@@ -2,12 +2,11 @@ return {
     -- "stevearc/conform.nvim",
     {
         "stevearc/conform.nvim",
-        event = { "BufWritePre" }, -- 按需加载
+        event = { "BufWritePre" },
         config = function()
             require("conform").setup {
-                -- 定义不同文件类型的格式化工具
                 formatters_by_ft = {
-                    lua = { "stylua" }, -- Lua 使用 stylua
+                    lua = { "stylua" },
                     python = { "isort", "black" },
                     cpp = { "clang-format" },
                     c = { "clang-format" },

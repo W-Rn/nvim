@@ -109,7 +109,7 @@ return {
                     border = "rounded",
                     -- scrolloff = 5,
                     scrollbar = false,
-                    max_height = 15,
+                    max_height = 40,
                     -- winhighlight = "",
                     draw = {
                         columns = {
@@ -149,7 +149,7 @@ return {
                 callback = function()
                     vim.api.nvim_set_hl(0, "BlinkCmpSource", { fg = "#DA70D6" })
                     vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#4682B4" })
-                    vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#1F4F42" })
+                    vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#2A2B3D" })
                     vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#4682B4" })
                     vim.api.nvim_set_hl(0, "BlinkCmpDocSeparator", { fg = "#4682B4" })
                     vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#4682B4" })
