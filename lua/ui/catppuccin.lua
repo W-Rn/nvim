@@ -21,7 +21,7 @@ return {
                 bufferline = true,
                 treesitter = true,
                 mason = false,
-                noice = true,
+                -- noice = true,
                 neotree = true,
                 blink_cmp = true,
                 rainbow_delimiters = true,
@@ -35,9 +35,9 @@ return {
             require("catppuccin").setup(opts)
             vim.cmd.colorscheme "catppuccin"
             vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-            vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#00BFFF" })
+            vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#4682B4" })
             vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none", fg = "#FCA561" })
-            vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#00BFFF" })
+            vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#4682B4" })
             vim.api.nvim_exec_autocmds("User", {
                 pattern = "LoadTheme",
             })
