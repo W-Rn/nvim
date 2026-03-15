@@ -12,9 +12,7 @@ return {
         opts = {
             ensure_installed = {
                 "json-lsp",
-                "prettierd",
                 "jq",
-                "fixjson",
             },
         },
     },
