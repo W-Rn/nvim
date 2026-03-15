@@ -34,6 +34,6 @@ return {
     },
     {
         "mason-org/mason.nvim",
-        opts = { ensure_installed = { "pyright", "black", "isort" } },
+        opts = { ensure_installed = { "pyright", "ruff" } },
     },
 }
