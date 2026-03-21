@@ -8,7 +8,7 @@ return {
     require "plugins.markdown",
     require "plugins.harpoon",
     require "plugins.utils",
-    require "plugins.codecompanion",
+    require "plugins.opencode",
     require "plugins.which-key",
     require "plugins.hiwords",
     require "plugins.undotree",

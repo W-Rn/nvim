@@ -16,7 +16,7 @@ return {
             { "<leader>t",  group = "<telescope>"                 },
             { "<leader>b",  group = "<BuffeeLine>"                },
             { "z",          group = "<fold>"                      },
-            { "<leader>cc", group = "<codecompanion>"             },
+            { "<leader>a", group = "<opencode>"                   },
         },
         -- expand all nodes wighout a description
         expand = function(node)
