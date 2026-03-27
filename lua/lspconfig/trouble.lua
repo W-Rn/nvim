@@ -19,7 +19,7 @@ return {
                     type = "split", -- 可以是 "split" 或 "float"
                     relative = "win",
                     position = "bottom",
-                    size = 10,
+                    size = 5,
                 },
             },
         },

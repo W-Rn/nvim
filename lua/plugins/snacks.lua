@@ -13,7 +13,11 @@ return {
     opts = {
         words = { enabled = false },
         explorer = { enabled = false },
-        bigfile = { enabled = true },
+        bigfile = {
+            enabled = true,
+            size = 300 * 1024,
+            line_length = 1000,
+        },
         dashboard = { enabled = true },
         terminal = { enabled = true },
         input = { enabled = true },
@@ -115,7 +119,7 @@ return {
         { "<leader>ff", function() Snacks.picker.files() end, desc = "[Snacks] Find Files" },
         { "<leader>fp", function() Snacks.picker.projects() end, desc = "[Snacks] Projects" },
         { "<leader>fr", function() Snacks.picker.recent() end, desc = "[Snacks] Recent" },
-        { "<leader>ft", function() Snacks.picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME', 'HACK' }} end, desc = "[Snacks] Todo/Fix/Fixme" },
+        { "<leader>ft", function() Snacks.picker.todo_comments { keywords = { 'NOTE','TODO', 'FIX', 'FIXME', 'HACK' }} end, desc = "[Snacks] Todo/Fix/Fixme" },
         -- git
         { "<leader>sgb", function() Snacks.picker.git_branches() end, desc = "[Snacks] Git Branches" },
         -- Grep

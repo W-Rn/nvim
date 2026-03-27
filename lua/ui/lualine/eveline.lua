@@ -152,7 +152,7 @@ function M.setup()
             end
             return " " .. vim.fn.fnamemodify(root, ":t")
         end,
-        color = { fg = colors.bg_text, bg = colors.magenta, gui = "bold" },
+        color = { fg = colors.bg_text, bg = colors.orange, gui = "bold" },
         padding = { left = 1, right = 0 },
         separator = { left = separators.left, right = separators.right },
     }
@@ -266,7 +266,7 @@ function M.setup()
     ins_right {
         "filename",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.magenta, gui = "bold" },
+        color = { fg = colors.orange, gui = "bold" },
         padding = { left = 1, right = 0 },
     }
 

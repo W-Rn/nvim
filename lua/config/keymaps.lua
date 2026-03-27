@@ -46,13 +46,13 @@ for c = string.byte "a", string.byte "z" do
     local key = string.char(c)
     vim.keymap.set("n", "dm" .. key, function()
         vim.cmd("delmarks " .. key)
-        vim.cmd "redrawstatus"
+        vim.cmd "redraw!"
     end, { noremap = true })
 end
 for c = string.byte "A", string.byte "Z" do
     local key = string.char(c)
     vim.keymap.set("n", "dm" .. key, function()
         vim.cmd("delmarks " .. key)
-        vim.cmd "redrawstatus"
+        vim.cmd "redraw!"
     end, { noremap = true })
 end
