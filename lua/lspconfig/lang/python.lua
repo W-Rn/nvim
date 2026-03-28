@@ -5,7 +5,7 @@ return {
         opts = {
             search = {
                 python = {
-                    command = "$FD '/python3$' /usr/bin/ --full-path --color never",
+                    command = "fd '/python3$' /usr/bin/ --full-path --color never",
                 },
             },
             options = {
