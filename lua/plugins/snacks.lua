@@ -16,7 +16,7 @@ return {
         bigfile = {
             enabled = true,
             size = 300 * 1024,
-            line_length = 1000,
+            line_length = 100,
         },
         dashboard = { enabled = true },
         terminal = { enabled = true },

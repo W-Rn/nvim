@@ -21,8 +21,10 @@ return {
                 ["<CR>"] = { "accept", "fallback" },
                 ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
                 ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+                ["<C-j>"] = { "select_next", "fallback" },
+                ["<C-k>"] = { "select_prev", "fallback" },
                 ["<C-e>"] = { "hide", "fallback" },
-                ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+                ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
                 ["<C-u>"] = { "scroll_documentation_up", "fallback" },
                 ["<C-d>"] = { "scroll_documentation_down", "fallback" },
 
