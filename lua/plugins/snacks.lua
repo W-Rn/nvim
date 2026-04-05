@@ -130,16 +130,11 @@ return {
         { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "[Snacks] Autocmds" },
         { "<leader>sh", function() Snacks.picker.help( { layout = "select" } ) end, desc = "[Snacks] Help Pages" },
         { "<leader>sH", function() Snacks.picker.highlights() end, desc = "[Snacks] Highlights" },
-        { "<leader>sk", function() Snacks.picker.keymaps( { layout = "select" } ) end, desc = "[Snacks] Keymaps" },
-        { "<leader>sc", function() Snacks.picker.colorschemes({ layout = 'select' }) end, desc = "[Snacks] Colorschemes" },
         { "<leader>sm", function() Snacks.picker.marks() end, desc = "[Snacks] Marks" },
         { "<leader>sp", function() Snacks.picker.spelling({ layout = "select" }) end, desc = "[Snacks] Spelling" },
         { "<leader>su", function() Snacks.picker.undo() end, desc = "[Snacks] Undo History" },
 
-        { "<leader>.",  function() Snacks.scratch() end, desc = "[Snacks] Toggle Scratch Buffer" },
-        { "<leader>S",  function() Snacks.scratch.select() end, desc = "[Snacks] Select Scratch Buffer" },
         { "<A-i>",      function() Snacks.terminal() end, desc = "[Snacks] Toggle terminal", mode = {"n",  "t"} },
-        -- { "<c-g>",      function() Snacks.lazygit() end, desc = "[Snacks] Buffer Diagnostics" },
     },
     config = function(_, opts)
         require("snacks").setup(opts)

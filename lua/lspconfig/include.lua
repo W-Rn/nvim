@@ -8,7 +8,6 @@ return {
     require "lspconfig.treesitter",
     require "lspconfig.blink",
     require "lspconfig.conform",
-    require "lspconfig.trouble",
     require "lspconfig.outline",
     require "lspconfig.lspsaga",
     require "lspconfig.neogen",

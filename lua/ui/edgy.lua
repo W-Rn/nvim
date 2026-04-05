@@ -8,12 +8,39 @@ return {
         vim.opt.splitkeep = "screen"
     end,
     opts = {
+        animate = {
+            enabled = false,
+        },
         -- 定义布局块
         options = {
             left = { size = 50 },
             right = { size = 50 },
             top = { size = 10 },
-            bottom = { size = 10 },
+            bottom = { size = 15 },
+        },
+        bottom = {
+            {
+                title = "Terminal",
+                ft = "toggleterm",
+                pinned = false,
+                open = function()
+                    require("toggleterm").toggle()
+                end,
+                wo = {
+                    winbar = true,
+                },
+            },
+            {
+                title = "Diagnostics",
+                ft = "qf",
+                pinned = false,
+                open = function()
+                    vim.diagnostic.setqflist()
+                end,
+                wo = {
+                    winbar = true,
+                },
+            },
         },
         left = { -- 左侧布局块
             {

@@ -15,17 +15,8 @@ return {
         },
         config = function(_, opts)
             require("venv-selector").setup(opts)
-      -- stylua: ignore
-      vim.keymap.set("n", "<leader>vs", "<Cmd>VenvSelect<CR>", { silent = true, noremap = true, buffer = true, desc = "Select VirtualEnv" })
-            -- vim.keymap.set("n", "<leader>vp", function()
-            --   local python = require("venv-selector").python()
-            --   if python then
-            --     print("Current Python: " .. python)
-            --   else
-            --     print "No virtual environment selected"
-            --     vim.cmd "VenvSelect"
-            --   end
-            -- end, { desc = "Show current Python or select venv" })
+            -- stylua: ignore
+            vim.keymap.set("n", "<leader>vs", "<Cmd>VenvSelect<CR>", { silent = true, noremap = true, buffer = false, desc = "Select VirtualEnv" })
         end,
     },
     {

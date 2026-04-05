@@ -29,6 +29,7 @@ return {
                 lsp_saga = true,
                 illuminate = true,
                 snacks = true,
+                flash = true,
             },
         },
         config = function(_, opts)

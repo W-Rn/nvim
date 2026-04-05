@@ -5,9 +5,9 @@ return {
         cmd = { "ToggleTerm", "TermExec" },
         keys = { "<A-\\>" },
         opts = {
-            size = 80,
+            size = 15,
             open_mapping = [[<A-\>]],
-            direction = "vertical",
+            direction = "horizontal",
         },
     },
 }
