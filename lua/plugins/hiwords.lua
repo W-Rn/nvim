@@ -6,10 +6,10 @@ return {
             require("illuminate").configure {
                 delay = 0, -- 高亮延迟 (ms)
                 under_cursor = false, -- 光标下单词高亮 (避免与光标样式冲突)
-                providers = { -- 支持的后端
-                    "treesitter",
-                    "lsp",
-                },
+                -- providers = { -- 支持的后端
+                --     "treesitter",
+                --     "lsp",
+                -- },
                 filetypes_denylist = { -- 禁用文件类型
                     "NeoTree",
                 },

@@ -24,7 +24,7 @@ return {
             close_if_last_window = true, -- 当只剩文件树窗口时自动退出
             window = {
                 position = "left", -- 必须与 edgy 的布局位置一致
-                width = 30,
+                width = 40,
                 mappings = {
                     ["<cr>"] = "none",
                     ["h"] = "close_node", -- 关闭目录（类似 nvim-tree 的 h）

@@ -10,8 +10,8 @@ return {
     opts = {
         -- 定义布局块
         options = {
-            left = { size = 30 },
-            right = { size = 40 },
+            left = { size = 50 },
+            right = { size = 50 },
             top = { size = 10 },
             bottom = { size = 10 },
         },
@@ -31,7 +31,7 @@ return {
                 pinned = true, -- 始终显示
                 open = "UndotreeToggle",
                 wo = {
-                    winbar = false, -- 禁用独立winbar
+                    winbar = true, -- 禁用独立winbar
                 },
             },
         },
