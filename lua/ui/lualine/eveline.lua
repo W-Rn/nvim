@@ -99,6 +99,7 @@ function M.setup()
         --     return ""
         -- end,
         "mode",
+        icon = "",
         color = function()
             -- auto change color according to neovims mode
             local mode_color = {
@@ -123,18 +124,18 @@ function M.setup()
                 ["!"] = colors.red,
                 t = colors.red,
             }
-            return { fg = colors.bg_text, bg = mode_color[vim.fn.mode()], gui = "bold" }
+            return { fg = mode_color[vim.fn.mode()], gui = "bold" }
         end,
-        separator = { left = "", right = separators.right },
-        padding = { left = 1, right = 0 },
+        -- separator = { left = "", right = separators.right },
+        padding = { left = 1, right = 1 },
     }
 
     ins_left {
         "branch",
         icon = "",
-        color = { fg = colors.bg_text, bg = colors.violet, gui = "bold" },
-        padding = { left = 1, right = 0 },
-        separator = { left = separators.left, right = separators.right },
+        color = { fg = colors.violet, gui = "bold" },
+        padding = { left = 1, right = 1 },
+        -- separator = { left = separators.left, right = separators.right },
     }
 
     ins_left {
@@ -152,9 +153,9 @@ function M.setup()
             end
             return " " .. vim.fn.fnamemodify(root, ":t")
         end,
-        color = { fg = colors.bg_text, bg = colors.orange, gui = "bold" },
-        padding = { left = 1, right = 0 },
-        separator = { left = separators.left, right = separators.right },
+        color = { fg = colors.orange, gui = "bold" },
+        padding = { left = 1, right = 1 },
+        -- separator = { left = separators.left, right = separators.right },
     }
 
     ins_left {
@@ -176,9 +177,9 @@ function M.setup()
             return ""
         end,
         -- icon = "⚙",
-        color = { fg = colors.bg_text, bg = colors.green, gui = "bold" },
-        padding = { left = 1, right = 0 },
-        separator = { left = separators.left, right = separators.right },
+        color = { fg = colors.green, gui = "bold" },
+        padding = { left = 1, right = 1 },
+        -- separator = { left = separators.left, right = separators.right },
     }
 
     ins_left {
@@ -191,7 +192,7 @@ function M.setup()
             removed = { fg = colors.red },
         },
         cond = conditions.hide_in_width,
-        padding = { left = 2, right = 0 },
+        padding = { left = 1, right = 1 },
     }
 
     ins_left {
@@ -203,6 +204,7 @@ function M.setup()
             warn = { fg = colors.yellow },
             info = { fg = colors.cyan },
         },
+        padding = { left = 1, right = 1 },
     }
 
     -- Insert mid section. You can make any number of sections in neovim :)
@@ -226,7 +228,7 @@ function M.setup()
 
         color = { fg = colors.bg_text, bg = colors.yellow, gui = "bold" },
         separator = { left = separators.left, right = separators.right },
-        padding = 0,
+        padding = { left = 1, right = 1 },
     }
 
     -- Add components to right sections
@@ -244,18 +246,6 @@ function M.setup()
         color = { fg = colors.green, gui = "bold" },
     }
 
-    -- ins_right {
-    --     "location",
-    --     color = { fg = colors.fg, gui = "bold" },
-    --     padding = { left = 0, right = 0 },
-    -- }
-
-    ins_right {
-        "progress",
-        color = { fg = colors.fg, gui = "bold" },
-        padding = { left = 1, right = 1 },
-    }
-
     ins_right {
         -- filesize component
         "filesize",
@@ -263,12 +253,24 @@ function M.setup()
         color = { fg = colors.fg, gui = "bold" },
         padding = { left = 1, right = 1 },
     }
+
     ins_right {
-        "filename",
-        cond = conditions.buffer_not_empty,
-        color = { fg = colors.orange, gui = "bold" },
-        padding = { left = 1, right = 0 },
+        "location",
+        color = { fg = colors.fg, gui = "bold" },
+        padding = { left = 1, right = 1 },
     }
+
+    ins_right {
+        "progress",
+        color = { fg = colors.fg, gui = "bold" },
+        padding = { left = 1, right = 1 },
+    }
+    -- ins_right {
+    --     "filename",
+    --     cond = conditions.buffer_not_empty,
+    --     color = { fg = colors.orange, gui = "bold" },
+    --     padding = { left = 1, right = 0 },
+    -- }
 
     ins_right {
         function()
@@ -276,7 +278,7 @@ function M.setup()
             return separators.theme_right
         end,
         color = { fg = colors.blue },
-        padding = { left = 0, right = 1 },
+        padding = { left = 1, right = 1 },
     }
 
     lualine.setup(opts)

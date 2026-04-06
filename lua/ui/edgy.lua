@@ -55,10 +55,10 @@ return {
             {
                 title = "Undo-Tree", -- 块标题
                 ft = "undotree", -- 关联的文件类型（需与文件树插件匹配）
-                pinned = true, -- 始终显示
+                pinned = false, -- 始终显示
                 open = "UndotreeToggle",
                 wo = {
-                    winbar = true, -- 禁用独立winbar
+                    winbar = false, -- 禁用独立winbar
                 },
             },
         },
