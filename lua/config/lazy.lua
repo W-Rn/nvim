@@ -45,7 +45,7 @@ require("lazy").setup {
     },
 
     -- install = { colorscheme = { "habamax" }, autoUpdate = false, missing = false },
-    install = { colorscheme = { "habamax" }, autoUpdate = true, missing = true },
+    install = { colorscheme = { "catppuccin" }, autoUpdate = true, missing = true },
     --install = { colorscheme = { "tokyonight"},},
     -- automatically check for plugin updates
     checker = { enabled = false },

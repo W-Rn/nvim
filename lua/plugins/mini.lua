@@ -82,7 +82,15 @@ return {
             {
                 "<leader>md",
                 function()
-                    require("mini.diff").toggle_overlay(0)
+                    -- 检查当前缓冲区是否已经开启了 mini.diff
+                    if vim.b.minidiff_summary then
+                        require("mini.diff").toggle_overlay(0)
+                    else
+                        vim.notify(
+                            "mini.diff 在此缓冲区未启用 (可能不在 Git 仓库中)",
+                            vim.log.levels.WARN
+                        )
+                    end
                 end,
                 desc = "Toggle mini.diff overlay",
             },

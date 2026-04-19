@@ -3,7 +3,8 @@ return {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
         config = function()
-            require("gitsigns").setup {
+            local gitsigns = require "gitsigns"
+            gitsigns.setup {
                 signs = {
                     add = { text = "▎" },
                     change = { text = "▎" },
@@ -19,6 +20,17 @@ return {
                     topdelete = { text = "" },
                     changedelete = { text = "▎" },
                 },
+                on_attach = function(bufnr)
+                    local function map(mode, l, r, opts)
+                        opts = opts or {}
+                        opts.buffer = bufnr
+                        vim.keymap.set(mode, l, r, opts)
+                    end
+                    map("n", "<leader>hQ", function()
+                        gitsigns.setqflist "all"
+                    end)
+                    map("n", "<leader>hq", gitsigns.setqflist)
+                end,
             }
         end,
     },
