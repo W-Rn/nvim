@@ -31,12 +31,19 @@ return {
                 },
             },
             {
-                title = "Diagnostics",
                 ft = "qf",
-                pinned = false,
-                open = function()
-                    vim.diagnostic.setqflist()
+                title = function()
+                    local qf_info = vim.fn.getqflist { title = 0 }
+                    local qf_title = qf_info.title or ""
+                    if qf_title:lower():find "git" or qf_title:lower():find "hunk" then
+                        return "󰊢 Gitsigns"
+                    elseif qf_title:lower():find "diagnostics" or qf_title == "" or qf_title == "Quickfix" then
+                        return "󱖫 Diagnostics"
+                    end
+
+                    return qf_title
                 end,
+                pinned = false,
                 wo = {
                     winbar = true,
                 },
