@@ -42,6 +42,7 @@ return {
             vim.api.nvim_exec_autocmds("User", {
                 pattern = "LoadTheme",
             })
+            vim.api.nvim_set_hl(0, "Visual", { reverse = true })
         end,
     },
 }

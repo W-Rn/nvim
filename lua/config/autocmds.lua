@@ -44,42 +44,47 @@ vim.api.nvim_create_autocmd("FileType", {
 local chezmoi_dir = vim.fn.expand "~/.local/share/chezmoi"
 
 -- 1. 拦截器：当你打开主目录的受管文件时，自动重定向到源目录
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+vim.api.nvim_create_autocmd("BufReadPost", {
     group = vim.api.nvim_create_augroup("ChezmoiRedirect", { clear = true }),
     callback = function(args)
         local filepath = vim.api.nvim_buf_get_name(args.buf)
 
-        -- 排除无效 buffer 或特殊协议 (比如终端、文件树插件)
         if filepath == "" or filepath:match "^[a-z]+://" then
             return
         end
 
-        -- 如果你已经在源目录里了，就不需要拦截，直接放行
         if filepath:sub(1, #chezmoi_dir) == chezmoi_dir then
             return
         end
 
-        -- 同步检查文件是否归 chezmoi 管 (极其迅速，不会卡顿)
-        local obj = vim.system({ "chezmoi", "source-path", filepath }, { text = true }):wait()
+        vim.defer_fn(function()
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local ok, val = pcall(vim.api.nvim_win_get_var, win, "neo_tree_preview")
+                if ok and val == 1 then
+                    return
+                end
+            end
 
-        if obj.code == 0 and obj.stdout then
-            local source_path = vim.trim(obj.stdout)
+            if not vim.api.nvim_buf_is_valid(args.buf) then
+                return
+            end
 
-            -- 如果存在源路径，实施拦截与替换
-            if source_path ~= "" and source_path ~= filepath then
-                vim.schedule(function()
-                    -- 打开真正的源文件
+            local obj = vim.system({ "chezmoi", "source-path", filepath }, { text = true }):wait()
+
+            if obj.code == 0 and obj.stdout then
+                local source_path = vim.trim(obj.stdout)
+
+                if source_path ~= "" and source_path ~= filepath then
                     vim.cmd("edit " .. vim.fn.fnameescape(source_path))
 
-                    -- 将刚才错误打开的主目录 buffer 从内存中彻底抹除
                     if vim.api.nvim_buf_is_valid(args.buf) then
                         vim.cmd("bwipeout " .. args.buf)
                     end
 
                     vim.notify("✨ 已拦截并重定向至源文件", vim.log.levels.INFO, { title = "Chezmoi" })
-                end)
+                end
             end
-        end
+        end, 150)
     end,
 })
 
