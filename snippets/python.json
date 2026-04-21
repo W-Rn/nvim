@@ -1,18 +1,4 @@
 {
-    "df.Histo1D": {
-        "prefix": "histo1d",
-        "body": [
-            "df.Histo1D((${1:binning}), \"${2:branch}\")"
-        ]
-    },
-    "Read Yaml": {
-        "prefix": "ryaml",
-        "body": [
-            "with open(${1:yamlfile}, 'r') as f:",
-            "\t${2:content} = yaml.safe_load(f)",
-            "\t${0}"
-        ]
-    },
     "main": {
         "prefix": "main",
         "body": [
@@ -24,90 +10,41 @@
             "\tmain()"
         ]
     },
-    "yearpol": {
-        "prefix": "year",
+    "if/else": {
+        "prefix": "ife",
         "body": [
-            "ps.add_argument(\"--year\", choices=[\"16\", \"17\", \"18\"])",
-            "ps.add_argument(\"--pol\", choices=[\"Down\", \"Up\"])",
-            "year = args.year",
-            "pol = args.pol"
+            "if ${1:condition}:",
+            "\t${2:pass}",
+            "else:",
+            "\t${0}"
         ]
     },
-    "cwd": {
-        "prefix": "cwd",
+    "for loop": {
+        "prefix": "for",
         "body": [
-            "cwd = get_cwd(__file__)"
+            "for ${1:i} in ${2:iterable}:",
+            "\t${0}"
         ]
     },
-    "numcpu": {
-        "prefix": "numcpu",
+    "try/except": {
+        "prefix": "try",
         "body": [
-            "ROOT.RooFit.NumCPU(${1})"
+            "try:",
+            "\t${1:pass}",
+            "except ${2:Exception} as e:",
+            "\t${0:raise e}"
         ]
     },
-    "th1d": {
-        "prefix": "th1d",
+    "list comprehension": {
+        "prefix": "list",
         "body": [
-            "ROOT.TH1D(\"${1:h}\", \"${2:h}\", ${3:binning})"
+            "[${1:x} for ${1:x} in ${2:iterable} if ${3:condition}]"
         ]
     },
-    "th2d": {
-        "prefix": "th2d",
+    "print f-string": {
+        "prefix": "pf",
         "body": [
-            "ROOT.TH2D(\"${1:h}\", \"${2:h}\", ${3:binning})"
-        ]
-    },
-    "Multithreading": {
-        "prefix": "mt",
-        "body": [
-            "ROOT.EnableImplicitMT()"
-        ]
-    },
-    "Multithreading Disable": {
-        "prefix": "mtd",
-        "body": [
-            "ROOT.DisableImplicitMT()"
-        ]
-    },
-    "Import ROOT": {
-        "prefix": "root",
-        "body": [
-            "import ROOT",
-            "ROOT.gROOT.SetBatch(True)"
-        ]
-    },
-    "canvas": {
-        "prefix": "canvas",
-        "body": [
-            "c = ROOT.TCanvas(\"c\", \"c\", 800, 600)",
-            "${2}",
-            "c.SaveAs(\"${1:test.pdf}\")"
-        ]
-    },
-    "import matplotlib": {
-        "prefix": "mpl",
-        "body": [
-            "import matplotlib as mpl",
-            "mpl.use(\"Agg\")"
-        ]
-    },
-    "argg": {
-        "prefix": "argg",
-        "body": [
-            "from argparse import ArgumentParser as AP",
-            "from argparse import ArgumentDefaultsHelpFormatter as ADHF",
-            "ps = AP(formatter_class=ADHF)",
-            "ps.add_argument(\"--test\", action=\"store_true\")",
-            "args = ps.parse_args()"
-        ]
-    },
-    "paras": {
-        "prefix": "paras",
-        "body": [
-            "import os",
-            "import sys",
-            "sys.path.append(os.environ[\"MAJORANA\"])",
-            "from paras import *"
+            "print(f\"${1:label}: {${2:value}}\")"
         ]
     }
 }
