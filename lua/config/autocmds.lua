@@ -77,9 +77,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                 if source_path ~= "" and source_path ~= filepath then
                     vim.cmd("edit " .. vim.fn.fnameescape(source_path))
 
-                    if vim.api.nvim_buf_is_valid(args.buf) then
-                        vim.cmd("bwipeout " .. args.buf)
-                    end
+                    local old_buf = args.buf
+                    vim.schedule(function()
+                        if vim.api.nvim_buf_is_valid(old_buf) then
+                            vim.bo[old_buf].buflisted = false
+                            pcall(vim.api.nvim_buf_delete, old_buf, { force = true })
+                        end
+                    end)
 
                     vim.notify("✨ 已拦截并重定向至源文件", vim.log.levels.INFO, { title = "Chezmoi" })
                 end
@@ -91,7 +95,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- 2. 触发器：当你在源目录保存文件时，自动执行 apply 使其生效
 vim.api.nvim_create_autocmd("BufWritePost", {
     group = vim.api.nvim_create_augroup("ChezmoiAutoApply", { clear = true }),
-    -- 只有当你保存的文件路径在 ~/.local/share/chezmoi 下时才触发
+    -- 只有当保存的文件路径在 ~/.local/share/chezmoi 下时才触发
     pattern = chezmoi_dir .. "/*",
     callback = function(args)
         local filepath = vim.api.nvim_buf_get_name(args.buf)
