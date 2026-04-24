@@ -15,7 +15,7 @@ return {
         explorer = { enabled = false },
         bigfile = {
             enabled = true,
-            size = 300 * 1024,
+            size = 3000 * 1024,
             line_length = 100,
         },
         dashboard = { enabled = true },
