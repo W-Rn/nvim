@@ -44,4 +44,9 @@ return {
             vim.keymap.set("n", "<c-g>", ":LazyGit<CR>", { noremap = true, silent = true })
         end,
     },
+    {
+        "W-Rn/chezmoi-signs.nvim",
+        event = "VeryLazy",
+        opts = {},
+    },
 }
