@@ -1,3 +1,16 @@
+-- 判断当前缓冲区是否为目录
+vim.api.nvim_create_autocmd("VimEnter", {
+    once = true,
+    callback = function()
+        local path = vim.fn.expand("%:p")
+        local stat = vim.uv.fs_stat(path)
+        if stat and stat.type == "directory" then
+            vim.api.nvim_exec_autocmds("User", {
+                pattern = "LoadDirectory",
+            })
+        end
+    end,
+})
 -- highlight yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight yanked text",

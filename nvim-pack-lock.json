@@ -106,6 +106,18 @@
       "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
       "src": "git@github.com:nvim-tree/nvim-web-devicons"
     },
+    "oil-git-status.nvim": {
+      "rev": "a3e2ccb00cb8822115e28a9a1791eda051d940c9",
+      "src": "https://github.com/refractalize/oil-git-status.nvim"
+    },
+    "oil-git.nvim": {
+      "rev": "95b0d83f70e5e3e889f4d2f8b70eba5185ff67b6",
+      "src": "https://github.com/benomahony/oil-git.nvim"
+    },
+    "oil.nvim": {
+      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
     "opencode.nvim": {
       "rev": "3b085e6b95bc8aabc760ada40ca31dd6801c6508",
       "src": "git@github.com:sudo-tee/opencode.nvim"

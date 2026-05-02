@@ -40,7 +40,8 @@ require("pack.config.format") -- BufWritePre
 -- 4f. 按键懒加载（首次按下特定按键时激活）
 -- ==============================================================
 require("pack.config.flash")
-require("pack.config.neo-tree")
+require("pack.config.oil")
+-- require("pack.config.neo-tree")
 require("pack.config.toggleterm")
 require("pack.config.outline")
 require("pack.config.harpoon")
