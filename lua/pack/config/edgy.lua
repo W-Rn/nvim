@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
             animate = { enabled = false },
             options = {
                 left = { size = 50 },
-                right = { size = 50 },
+                right = { size = 90 },
                 top = { size = 10 },
                 bottom = { size = 15 },
             },
@@ -45,11 +45,18 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 },
             },
             left = {
+                -- {
+                --     title = "Neo-Tree",
+                --     ft = "neo-tree",
+                --     pinned = false,
+                --     open = "NeoTree",
+                --     wo = { winbar = false },
+                -- },
                 {
-                    title = "Neo-Tree",
-                    ft = "neo-tree",
+                    title = "Outline",
+                    ft = "Outline",
                     pinned = false,
-                    open = "NeoTree",
+                    open = "Outline",
                     wo = { winbar = false },
                 },
                 {
@@ -60,11 +67,24 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 },
             },
             right = {
+                -- {
+                --     title = "Outline",
+                --     ft = "Outline",
+                --     pinned = true,
+                --     open = "Outline",
+                --     wo = { winbar = false },
+                -- },
                 {
-                    title = "Outline",
-                    ft = "Outline",
-                    pinned = true,
-                    open = "Outline",
+                    title = "OpenCode",
+                    ft = "opencode_output",
+                    pinned = false,
+                    wo = { winbar = false },
+                },
+                {
+                    title = "OpenCode",
+                    ft = "opencode",
+                    pinned = false,
+                    size = { height = 0.1 },
                     wo = { winbar = false },
                 },
             },

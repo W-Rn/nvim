@@ -13,10 +13,18 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                 hide_extensions = true,
                 show_all_buffers = false,
                 offsets = {
+                    -- {
+                    --     filetype = "neo-tree",
+                    --     text = " Neo-Tree",
+                    --     text_align = "center",
+                    --     highlight = "Directory",
+                    --     separator = true,
+                    --     padding = 0,
+                    -- },
                     {
-                        filetype = "neo-tree",
-                        text = " Neo-Tree",
-                        text_align = "left",
+                        filetype = "opencode_output",
+                        text = "OpenCode",
+                        text_align = "center",
                         highlight = "Directory",
                         separator = true,
                         padding = 0,
@@ -24,7 +32,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                     {
                         filetype = "Outline",
                         text = " Code Outline",
-                        text_align = "left",
+                        text_align = "center",
                         highlight = "Label",
                         separator = true,
                         padding = 0,
@@ -32,7 +40,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                     {
                         filetype = "nvim-undotree",
                         text = " Undo History",
-                        text_align = "left",
+                        text_align = "center",
                         highlight = "Special",
                         separator = true,
                         padding = 0,

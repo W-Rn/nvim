@@ -11,10 +11,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         require("illuminate").configure({
             delay = 0,
             under_cursor = false,
-            providers = { -- 支持的后端
-                "treesitter",
-                "lsp",
-            },
             filetypes_denylist = { "NeoTree" },
             modes_denylist = { "i", "v" },
         })

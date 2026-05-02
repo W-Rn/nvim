@@ -9,7 +9,11 @@ vim.keymap.set("n", "<leader>o", function()
     if not outline_loaded then
         outline_loaded = true
         vim.cmd.packadd("outline.nvim")
-        require("outline").setup({})
+        require("outline").setup({
+            outline_window = {
+                focus_on_open = false,
+            },
+        })
     end
     vim.cmd("Outline")
 end, { desc = "Outline" })
