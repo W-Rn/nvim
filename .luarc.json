@@ -1,0 +1,9 @@
+{
+    "diagnostics.disable": [
+        "param-type-mismatch",
+        "redundant-value",
+        "redundant-parameter"
+    ],
+    "completion.autoRequire": false,
+    "diagnostics.globals": []
+}
