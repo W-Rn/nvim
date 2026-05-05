@@ -2,8 +2,6 @@
 -- 文件树 — <leader>e 按键懒加载
 -- 特殊窗口（Outline/undotree/tagbar）中禁用文件树
 -- ==============================================================
--- neo-tree:禁用
--- ==============================================================
 
 vim.pack.add({ { src = "https://github.com/nvim-neo-tree/neo-tree.nvim" } }, { load = function() end, confirm = false })
 
@@ -43,7 +41,7 @@ local function ensure_neotree()
     vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { link = "WinSeparator" })
 end
 
-vim.keymap.set("n", "<leader>e", function()
+vim.keymap.set("n", "<leader>tn", function()
     if not _G.is_outline_window or not _G.is_outline_window() then
         ensure_neotree()
         require("neo-tree.command").execute({ toggle = true })

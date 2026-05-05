@@ -79,5 +79,7 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 -- 复制粘贴联通系统粘贴板
 vim.o.clipboard = "unnamedplus"
-vim.cmd.packadd("nvim.undotree")
+vim.o.undofile = true
+vim.o.undodir = vim.fn.expand("~/.local/share/nvim/undo")
 vim.cmd.packadd("nvim.difftool")
+vim.cmd.packadd("nvim.undotree")

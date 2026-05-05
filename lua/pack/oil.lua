@@ -24,10 +24,14 @@ local function ensure_oil()
     require("oil").setup({
         default_file_explorer = true,
         keymaps = {
+            ["<C-h>"] = false,
+            ["<C-l>"] = false,
+            ["<C-k>"] = false,
+            ["<C-j>"] = false,
+            ["<C-s>"] = false,
+            ["<C-c>"] = false,
+            ["<C-t>"] = false,
             ["<C-r>"] = "actions.refresh",
-            ["<leader>y"] = "actions.yank_entry",
-            ["g."] = false,
-            ["zh"] = "actions.toggle_hidden",
             ["\\"] = { "actions.select", opts = { horizontal = true } },
             ["|"] = { "actions.select", opts = { vertical = true } },
             ["<leader>e"] = "actions.close",
@@ -43,9 +47,24 @@ local function ensure_oil()
                     end
                 end,
             },
+
+            ["gx"] = "actions.open_external",
+            ["g\\"] = { "actions.toggle_trash", mode = "n" },
         },
         win_options = {
             winbar = "%!v:lua.get_oil_winbar()",
+        },
+        float = {
+            border = "rounded",
+        },
+        confirmation = {
+            border = "rounded",
+        },
+        progress = {
+            border = "rounded",
+        },
+        keymaps_help = {
+            border = "rounded",
         },
     })
 end

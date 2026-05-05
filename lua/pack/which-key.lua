@@ -19,7 +19,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 { "<leader>t", group = "<telescope>" },
                 { "<leader>b", group = "<BuffeeLine>" },
                 { "z", group = "<fold>" },
-                { "<leader>a", group = "<opencode>" },
+                { "<leader>o", group = "<opencode>" },
+                { "<leader>t", group = "<tree>" },
             },
             expand = function(node)
                 return not node.desc

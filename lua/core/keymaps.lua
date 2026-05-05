@@ -30,7 +30,6 @@ vim.keymap.set("n", "<Up>", ":res +1<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Down>", ":res -1<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>u", ":Undotree<CR>", { noremap = true, silent = true })
 
 -- mark
 local mark_chars = {}
@@ -61,7 +60,6 @@ vim.keymap.set("v", "<A-s>", ":m '>+1<CR>gv=gv", { desc = "向下移动选中块
 vim.keymap.set("v", "<A-w>", ":m '<-2<CR>gv=gv", { desc = "向上移动选中块", silent = true })
 vim.keymap.set("i", "<A-s>", "<Esc><Cmd>m .+1<CR>==gi", { desc = "向下移动当前行" })
 vim.keymap.set("i", "<A-w>", "<Esc><Cmd>m .-2<CR>==gi", { desc = "向上移动当前行" })
-vim.keymap.set("n", "<leader>st", function()
-    local elapsed = vim.fn.reltimestr(vim.fn.reltime(vim.g.startuptime))
-    vim.notify("Neovim 启动耗时: " .. elapsed .. " 秒", vim.log.levels.INFO)
-end, { desc = "显示启动耗时" })
+
+-- Undotree
+vim.keymap.set("n", "<leader>tu", "<CMD>Undotree<CR>", { noremap = true, silent = true })

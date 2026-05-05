@@ -140,6 +140,7 @@ vim.keymap.set("n", "<leader>fG", function() Snacks.picker.grep() end, { desc = 
 vim.keymap.set({ "n", "x" }, "<leader>fw", function() Snacks.picker.grep_word() end, { desc = "[Snacks] Grep Word" })
 vim.keymap.set("n", "<leader>sa", function() Snacks.picker.autocmds() end, { desc = "[Snacks] Autocmds" })
 vim.keymap.set("n", "<leader>sh", function() Snacks.picker.help { layout = "select" } end, { desc = "[Snacks] Help" })
+vim.keymap.set("n", "<leader>sk", function() Snacks.picker.keymaps { layout = "select" } end, { desc = "[Snacks] Help" })
 vim.keymap.set("n", "<leader>sH", function() Snacks.picker.highlights() end, { desc = "[Snacks] Highlights" })
 vim.keymap.set("n", "<leader>sm", function() Snacks.picker.marks() end, { desc = "[Snacks] Marks" })
 vim.keymap.set("n", "<leader>sp", function() Snacks.picker.spelling { layout = "select" } end, { desc = "[Snacks] Spelling" })

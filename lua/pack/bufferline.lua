@@ -13,14 +13,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                 hide_extensions = true,
                 show_all_buffers = false,
                 offsets = {
-                    -- {
-                    --     filetype = "neo-tree",
-                    --     text = " Neo-Tree",
-                    --     text_align = "center",
-                    --     highlight = "Directory",
-                    --     separator = true,
-                    --     padding = 0,
-                    -- },
+                    {
+                        filetype = "neo-tree",
+                        text = " Neo-Tree",
+                        text_align = "center",
+                        highlight = "Directory",
+                        separator = true,
+                        padding = 0,
+                    },
                     {
                         filetype = "opencode_output",
                         text = "OpenCode",

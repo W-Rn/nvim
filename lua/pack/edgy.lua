@@ -45,18 +45,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 },
             },
             left = {
-                -- {
-                --     title = "Neo-Tree",
-                --     ft = "neo-tree",
-                --     pinned = false,
-                --     open = "NeoTree",
-                --     wo = { winbar = false },
-                -- },
+                {
+                    title = "Neo-Tree",
+                    ft = "neo-tree",
+                    pinned = false,
+                    wo = { winbar = false },
+                },
                 {
                     title = "Outline",
                     ft = "Outline",
                     pinned = false,
-                    open = "Outline",
                     wo = { winbar = false },
                 },
                 {
@@ -71,7 +69,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 --     title = "Outline",
                 --     ft = "Outline",
                 --     pinned = true,
-                --     open = "Outline",
                 --     wo = { winbar = false },
                 -- },
                 {

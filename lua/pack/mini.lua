@@ -3,8 +3,6 @@
 -- mini.files: <leader>mf 按键懒加载
 -- mini.surround/ai/diff: VimEnter 懒加载
 -- ==============================================================
--- neo-tree:禁用
--- ==============================================================
 
 vim.pack.add({
     -- { src = "https://github.com/nvim-mini/mini.files" },

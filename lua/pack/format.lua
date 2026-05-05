@@ -4,7 +4,7 @@
 
 vim.pack.add({ { src = "https://github.com/stevearc/conform.nvim" } }, { load = function() end, confirm = false })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufReadPost", {
     once = true,
     callback = function()
         vim.cmd.packadd("conform.nvim")
@@ -22,12 +22,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
                 sh      = { "shfmt" },
             },
             -- stylua: ignore end
-            format_on_save = function(bufnr)
-                if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-                    return
-                end
-                return { timeout_ms = 5000, lsp_format = "fallback" }
-            end,
+            format_on_save = {
+                timeout_ms = 5000, -- 格式化超时时间（毫秒）
+                lsp_fallback = false, -- 如果格式化失败，尝试使用 LSP 格式化
+            },
         })
     end,
 })

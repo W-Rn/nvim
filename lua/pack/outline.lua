@@ -5,7 +5,7 @@
 vim.pack.add({ { src = "https://github.com/hedyhli/outline.nvim" } }, { load = function() end, confirm = false })
 
 local outline_loaded = false
-vim.keymap.set("n", "<leader>o", function()
+vim.keymap.set("n", "<leader>to", function()
     if not outline_loaded then
         outline_loaded = true
         vim.cmd.packadd("outline.nvim")
@@ -16,4 +16,4 @@ vim.keymap.set("n", "<leader>o", function()
         })
     end
     vim.cmd("Outline")
-end, { desc = "Outline" })
+end, { desc = "Lsp Outline" })

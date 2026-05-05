@@ -30,5 +30,3 @@ vim.keymap.set("n", "<F12>", enhanced_run, {
     silent = true,
     desc = "󰐅 智能运行当前文件",
 })
-
-vim.api.nvim_create_user_command("RunCode", enhanced_run, { desc = "Run current file" })
