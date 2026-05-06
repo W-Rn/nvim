@@ -25,20 +25,20 @@ local function ensure_neotree()
         },
     })
 
-    -- 特殊窗口类型列表（在这些窗口中禁止打开文件树）
-    local special_buffers = { "Outline", "symbols-outline", "undotree", "neo-tree-popup", "tagbar" }
-    _G.is_outline_window = function()
-        local buf_ft = vim.bo.filetype
-        for _, ft in ipairs(special_buffers) do
-            if buf_ft == ft then
-                return true
-            end
-        end
-        return string.match(vim.api.nvim_buf_get_name(0), "OUTLINE$") ~= nil
-    end
-
     vim.api.nvim_set_hl(0, "NeoTreeVertSplit", { link = "WinSeparator" })
     vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { link = "WinSeparator" })
+end
+
+-- 特殊窗口类型列表（在这些窗口中禁止打开文件树）
+local special_buffers = { "Outline", "symbols-outline", "nvim-undotree", "neo-tree-popup", "tagbar" }
+_G.is_outline_window = function()
+    local buf_ft = vim.bo.filetype
+    for _, ft in ipairs(special_buffers) do
+        if buf_ft == ft then
+            return true
+        end
+    end
+    return string.match(vim.api.nvim_buf_get_name(0), "OUTLINE$") ~= nil
 end
 
 vim.keymap.set("n", "<leader>tn", function()

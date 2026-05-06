@@ -62,4 +62,11 @@ vim.keymap.set("i", "<A-s>", "<Esc><Cmd>m .+1<CR>==gi", { desc = "向下移动�
 vim.keymap.set("i", "<A-w>", "<Esc><Cmd>m .-2<CR>==gi", { desc = "向上移动当前行" })
 
 -- Undotree
-vim.keymap.set("n", "<leader>tu", "<CMD>Undotree<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>tu", "<CMD>Undotree<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>tu", function()
+    local ft = vim.bo.filetype
+    if ft == "neo-tree" or ft == "edgy" then
+        vim.cmd("wincmd p")
+    end
+    vim.cmd("Undotree")
+end, { noremap = true, silent = true })

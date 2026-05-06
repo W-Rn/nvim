@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "VimEnter" }, {
     once = true,
     callback = function()
         vim.cmd.packadd("nvim-colorizer.lua")
+        require("colorizer").setup()
     end,
 })
 
@@ -33,7 +34,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 })
 
 -- trim
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufReadPost", {
     once = true,
     callback = function()
         vim.cmd.packadd("trim.nvim")

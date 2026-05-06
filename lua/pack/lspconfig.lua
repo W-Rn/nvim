@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set(mode, lhs, rhs, { buffer = args.buf, desc = desc, silent = true, noremap = true })
         end
         -- stylua: ignore start
-        keymap("n", "grq", vim.diagnostic.setqflist, "诊断到 quickfix")
+        keymap("n", "<leader>gq", vim.diagnostic.setqflist, "诊断到 quickfix")
         keymap("n", "[d", function() vim.diagnostic.jump { count = -1 } end, "上一个诊断")
         keymap("n", "]d", function() vim.diagnostic.jump { count = 1 } end, "下一个诊断")
         keymap("n", "[e", function() vim.diagnostic.jump { count = -1, severity = vim.diagnostic.severity.ERROR } end, "上一个错误")

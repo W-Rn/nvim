@@ -74,6 +74,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
     once = true,
     callback = function()
         vim.cmd.packadd("mini.surround")
+        require("mini.surround").setup({})
     end,
 })
 
@@ -82,6 +83,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
     once = true,
     callback = function()
         vim.cmd.packadd("mini.ai")
+        require("mini.ai").setup({})
     end,
 })
 

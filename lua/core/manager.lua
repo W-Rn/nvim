@@ -1,8 +1,8 @@
 -- ==============================================================
--- 插件管理命令
---   :PackUpdate 更新插件（弹出确认 buffer 展示详情）
---   :PackDelete 删除插件
--- 均支持 Tab 补全插件名，无参数时默认全部
+-- Plugin management commands
+--   :PackUpdate  update plugins (confirmation buffer with details)
+--   :PackDelete  delete plugins
+-- Tab-completable plugin names; defaults to all if no arg
 -- ==============================================================
 
 local function get_managed_names()
@@ -19,13 +19,13 @@ local function complete_plugin(arg_lead)
     end, get_managed_names())
 end
 
--- 浮动确认弹框（替代 vim.ui.input）
+-- Floating confirm dialog
 local function floating_confirm(title, message, on_confirm)
     local buf = vim.api.nvim_create_buf(false, true)
     local lines = vim.split(message, "\n")
     table.insert(lines, 1, title)
     table.insert(lines, "")
-    table.insert(lines, "[y] 确认    [n] 取消")
+    table.insert(lines, "[y] Confirm    [n] Cancel")
 
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
     vim.bo[buf].modifiable = false
@@ -65,7 +65,7 @@ local function floating_confirm(title, message, on_confirm)
     vim.keymap.set("n", "q", function() close() end, opts)
 end
 
--- :PackUpdate — 更新插件（确认 buffer 展示详情，:w 确认 / :q 放弃）
+-- :PackUpdate — update plugins (confirmation buffer, :w to confirm / :q to discard)
 vim.api.nvim_create_user_command("PackUpdate", function(opts)
     if #opts.args > 0 then
         vim.pack.update({ opts.args })
@@ -74,11 +74,11 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
     end
 end, {
     nargs = "?",
-    desc = "更新插件（无参数则更新全部）",
+    desc = "Update plugins (update all if no args)",
     complete = complete_plugin,
 })
 
--- :PackDelete — 删除插件
+-- :PackDelete — delete plugins
 vim.api.nvim_create_user_command("PackDelete", function(opts)
     if #opts.args > 0 then
         local name = opts.args
@@ -90,7 +90,7 @@ vim.api.nvim_create_user_command("PackDelete", function(opts)
             end
         end
         if is_active then
-            floating_confirm("强制删除", "插件 " .. name .. " 仍活跃，确认删除？", function()
+            floating_confirm("Force Delete", "Plugin " .. name .. " is still active. Confirm delete?", function()
                 vim.pack.del({ name }, { force = true })
             end)
         else
@@ -104,16 +104,16 @@ vim.api.nvim_create_user_command("PackDelete", function(opts)
             end
         end
         if #inactive == 0 then
-            vim.notify("没有非活跃插件可删除", vim.log.levels.INFO)
+            vim.notify("No inactive plugins to delete", vim.log.levels.INFO)
             return
         end
-        floating_confirm("批量删除",
-            "确认删除以下 " .. #inactive .. " 个非活跃插件？\n" .. table.concat(inactive, ", "), function()
+        floating_confirm("Bulk Delete",
+            "Confirm delete the following " .. #inactive .. " inactive plugins?\n" .. table.concat(inactive, ", "), function()
                 vim.pack.del(inactive)
             end)
     end
 end, {
     nargs = "?",
-    desc = "删除插件（无参数则删除全部非活跃插件）",
+    desc = "Delete plugins (delete all inactive if no args)",
     complete = complete_plugin,
 })
