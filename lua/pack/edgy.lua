@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
             animate = { enabled = false },
             options = {
                 left = { size = 50 },
-                right = { size = 90 },
+                right = { size = 95 },
                 top = { size = 10 },
                 bottom = { size = 15 },
             },
@@ -65,12 +65,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 },
             },
             right = {
-                -- {
-                --     title = "Outline",
-                --     ft = "Outline",
-                --     pinned = true,
-                --     wo = { winbar = false },
-                -- },
                 {
                     title = "OpenCode",
                     ft = "opencode_output",
