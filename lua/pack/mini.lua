@@ -7,7 +7,7 @@
 vim.pack.add({
     -- { src = "https://github.com/nvim-mini/mini.files" },
     { src = "https://github.com/nvim-mini/mini.ai" },
-    { src = "https://github.com/nvim-mini/mini.diff" },
+    -- { src = "https://github.com/nvim-mini/mini.diff" },
     { src = "https://github.com/nvim-mini/mini.surround" },
 }, { load = function() end, confirm = false })
 
@@ -87,27 +87,27 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end,
 })
 
--- mini.diff — VimEnter
-vim.api.nvim_create_autocmd("VimEnter", {
-    once = true,
-    callback = function()
-        vim.cmd.packadd("mini.diff")
-        require("mini.diff").setup({
-            view = {
-                style = "sign",
-                signs = {
-                    add = "▎",
-                    change = "▎",
-                    delete = "",
-                },
-            },
-        })
-        vim.keymap.set("n", "<leader>md", function()
-            if vim.b.minidiff_summary then
-                require("mini.diff").toggle_overlay(0)
-            else
-                vim.notify("mini.diff 在此缓冲区未启用 (可能不在 Git 仓库中)", vim.log.levels.WARN)
-            end
-        end, { desc = "Toggle mini.diff overlay" })
-    end,
-})
+-- -- mini.diff — VimEnter
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     once = true,
+--     callback = function()
+--         vim.cmd.packadd("mini.diff")
+--         require("mini.diff").setup({
+--             view = {
+--                 style = "sign",
+--                 signs = {
+--                     add = "▎",
+--                     change = "▎",
+--                     delete = "",
+--                 },
+--             },
+--         })
+--         vim.keymap.set("n", "<leader>md", function()
+--             if vim.b.minidiff_summary then
+--                 require("mini.diff").toggle_overlay(0)
+--             else
+--                 vim.notify("mini.diff 在此缓冲区未启用 (可能不在 Git 仓库中)", vim.log.levels.WARN)
+--             end
+--         end, { desc = "Toggle mini.diff overlay" })
+--     end,
+-- })
