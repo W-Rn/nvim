@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
         require("edgy").setup({
             animate = { enabled = false },
             options = {
-                left = { size = 50 },
+                left = { size = 40 },
                 right = { size = 95 },
                 top = { size = 10 },
                 bottom = { size = 15 },
@@ -60,6 +60,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 {
                     title = "Undo-Tree",
                     ft = "nvim-undotree",
+                    pinned = false,
+                    wo = { winbar = false },
+                },
+                {
+                    title = "Codediff-Explorer",
+                    ft = "codediff-explorer",
                     pinned = false,
                     wo = { winbar = false },
                 },
