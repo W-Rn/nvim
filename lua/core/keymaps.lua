@@ -61,12 +61,12 @@ vim.keymap.set("v", "<A-w>", ":m '<-2<CR>gv=gv", { desc = "向上移动选中块
 vim.keymap.set("i", "<A-s>", "<Esc><Cmd>m .+1<CR>==gi", { desc = "向下移动当前行" })
 vim.keymap.set("i", "<A-w>", "<Esc><Cmd>m .-2<CR>==gi", { desc = "向上移动当前行" })
 
--- Undotree
--- vim.keymap.set("n", "<leader>tu", "<CMD>Undotree<CR>", { noremap = true, silent = true })
+-- Undotree — 特殊窗口中禁止打开
+local undotree_blocked = { "codediff-explorer", "qf", "neo-tree", "Outline", "neo-tree-popup", "toggleterm" }
 vim.keymap.set("n", "<leader>tu", function()
-    local ft = vim.bo.filetype
-    if ft == "neo-tree" or ft == "edgy" then
-        vim.cmd("wincmd p")
+    if vim.tbl_contains(undotree_blocked, vim.bo.filetype) then
+        vim.notify("禁止在当前buffer中打开撤销树", vim.log.levels.WARN)
+        return
     end
     vim.cmd("Undotree")
-end, { noremap = true, silent = true })
+end, { desc = "Nvim-undotree", noremap = true, silent = true })

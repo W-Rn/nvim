@@ -1,6 +1,6 @@
 -- ==============================================================
 -- 文件树 — <leader>e 按键懒加载
--- 特殊窗口（Outline/undotree/tagbar）中禁用文件树
+-- 特殊窗口（Outline/undotree）中禁用文件树
 -- ==============================================================
 
 vim.pack.add({ { src = "https://github.com/nvim-neo-tree/neo-tree.nvim" } }, { load = function() end, confirm = false })
@@ -29,23 +29,13 @@ local function ensure_neotree()
     vim.api.nvim_set_hl(0, "NeoTreeWinSeparator", { link = "WinSeparator" })
 end
 
--- 特殊窗口类型列表（在这些窗口中禁止打开文件树）
-local special_buffers = { "Outline", "symbols-outline", "nvim-undotree", "neo-tree-popup", "tagbar" }
-_G.is_outline_window = function()
-    local buf_ft = vim.bo.filetype
-    for _, ft in ipairs(special_buffers) do
-        if buf_ft == ft then
-            return true
-        end
-    end
-    return string.match(vim.api.nvim_buf_get_name(0), "OUTLINE$") ~= nil
-end
-
+-- 特殊窗口中禁止打开
+local neo_tree_blocked = { "codediff-explorer", "qf", "Outline", "nvim-undotree", "neo-tree-popup", "toggleterm" }
 vim.keymap.set("n", "<leader>tn", function()
-    if not _G.is_outline_window or not _G.is_outline_window() then
-        ensure_neotree()
-        require("neo-tree.command").execute({ toggle = true })
-    else
+    if vim.tbl_contains(neo_tree_blocked, vim.bo.filetype) then
         vim.notify("禁止在当前buffer中打开文件树", vim.log.levels.WARN)
+        return
     end
+    ensure_neotree()
+    require("neo-tree.command").execute({ toggle = true })
 end, { desc = "Toggle Neo-Tree" })
