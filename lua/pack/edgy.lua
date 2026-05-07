@@ -63,12 +63,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
                     pinned = false,
                     wo = { winbar = false },
                 },
-                {
-                    title = "Codediff-Explorer",
-                    ft = "codediff-explorer",
-                    pinned = false,
-                    wo = { winbar = false },
-                },
             },
             right = {
                 {
