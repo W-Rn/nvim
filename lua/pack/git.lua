@@ -2,13 +2,16 @@
 -- Git 集成 — gitsigns + lazygit + chezmoi-signs
 -- gitsigns/chezmoi: VimEnter 懒加载
 -- lazygit: <c-g> 按键懒加载
+-- CodeDiff: <leader>tc 按键懒加载
 -- ==============================================================
 
 vim.pack.add({
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/kdheepak/lazygit.nvim" },
     { src = "https://github.com/W-Rn/chezmoi-signs.nvim" },
+    { src = "https://github.com/esmuellert/codediff.nvim" },
 }, { load = function() end, confirm = false })
+vim.cmd.packadd("codediff.nvim")
 
 -- gitsigns — VimEnter
 vim.api.nvim_create_autocmd("VimEnter", {
@@ -67,3 +70,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         vim.cmd.packadd("chezmoi-signs.nvim")
     end,
 })
+-- codediff - <leader>tc 按键触发
+local codediff_loaded = false
+local codediff_blocked = { "Outline", "qf", "neo-tree", "nvim-undotree", "neo-tree-popup", "toggleterm" }
+vim.keymap.set("n", "<leader>tc", function()
+    if vim.tbl_contains(codediff_blocked, vim.bo.filetype) then
+        vim.notify("禁止在当前buffer中打开大纲", vim.log.levels.WARN)
+        return
+    end
+    if not codediff_loaded then
+        codediff_loaded = true
+        vim.cmd.packadd("codediff.nvim")
+    end
+    vim.cmd("CodeDiff")
+end, { desc = "CodeDiff" })
