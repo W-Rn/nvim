@@ -12,8 +12,23 @@ local function ensure_outline()
     outline_loaded = true
     vim.cmd.packadd("outline.nvim")
     require("outline").setup({
+        outline_items = {
+            show_symbol_details = false,
+        },
         outline_window = {
+            position = "left",
             focus_on_open = false,
+        },
+        guides = {
+            enabled = true,
+            markers = {
+                bottom = "└",
+                middle = "│",
+                vertical = "│",
+            },
+        },
+        symbol_folding = {
+            markers = { " 󰜴", " 󰜮" },
         },
     })
 end
