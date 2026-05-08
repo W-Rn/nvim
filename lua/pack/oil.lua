@@ -24,18 +24,18 @@ local function ensure_oil()
     require("oil").setup({
         default_file_explorer = true,
         keymaps = {
-            ["<C-h>"] = false,
-            ["<C-l>"] = false,
-            ["<C-k>"] = false,
-            ["<C-j>"] = false,
-            ["<C-s>"] = false,
-            ["<C-c>"] = false,
-            ["<C-t>"] = false,
+            ["g?"] = { "actions.show_help", mode = "n" },
             ["<C-r>"] = "actions.refresh",
+            ["<C-p>"] = "actions.preview",
+            ["<CR>"] = "actions.select",
             ["\\"] = { "actions.select", opts = { horizontal = true } },
             ["|"] = { "actions.select", opts = { vertical = true } },
-            ["<leader>e"] = "actions.close",
+            ["."] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+            ["g."] = { "actions.open_cwd", mode = "n" },
             ["<BS>"] = "actions.parent",
+            ["<leader>e"] = "actions.close",
+            ["q"] = "actions.close",
+            ["H"] = { "actions.toggle_hidden", mode = "n" },
             ["gd"] = {
                 desc = "Toggle file detail view",
                 callback = function()
@@ -48,9 +48,9 @@ local function ensure_oil()
                 end,
             },
 
-            ["gx"] = "actions.open_external",
             ["g\\"] = { "actions.toggle_trash", mode = "n" },
         },
+        use_default_keymaps = false,
         win_options = {
             winbar = "%!v:lua.get_oil_winbar()",
         },
