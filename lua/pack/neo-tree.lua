@@ -16,7 +16,7 @@ local function ensure_neotree()
         close_if_last_window = true,
         window = {
             position = "left",
-            width = 50,
+            width = 40,
             mappings = {
                 ["<cr>"] = "none",
                 ["h"] = "close_node",
