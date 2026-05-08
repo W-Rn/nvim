@@ -30,6 +30,7 @@ require("pack.opencode")
 -- ==============================================================
 require("pack.bufferline") -- BufReadPost
 require("pack.git") -- gitsigns/chezmoi(VimEnter) + lazygit(keys)
+require("pack.codediff") -- :CodeDiff 命令懒加载
 require("pack.mini") -- mini.surround/ai/diff(VimEnter) + mini.files(keys)
 require("pack.neogen") -- LspAttach
 require("pack.vim-illuminate") -- BufReadPost
