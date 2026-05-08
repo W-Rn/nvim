@@ -82,14 +82,10 @@ local function _codediff_complete(arg_lead, cmd_line, _)
     return vim.fn.getcompletion(arg_lead, "file")
 end
 
-local codediff_loaded = false
 vim.api.nvim_create_user_command("CodeDiff", function(opts)
-    if not codediff_loaded then
-        codediff_loaded = true
-        vim.api.nvim_del_user_command("CodeDiff")
-        vim.cmd.packadd("codediff.nvim")
-        require("codediff").setup()
-    end
+    vim.api.nvim_del_user_command("CodeDiff")
+    vim.cmd.packadd("codediff.nvim")
+    require("codediff").setup()
     require("codediff.commands").vscode_diff(opts)
 end, {
     nargs = "*",
