@@ -2,14 +2,12 @@
 -- Git 集成 — gitsigns + lazygit + chezmoi-signs
 -- gitsigns/chezmoi: VimEnter 懒加载
 -- lazygit: <c-g> 按键懒加载
--- CodeDiff: <leader>tc 按键懒加载
 -- ==============================================================
 
 vim.pack.add({
     { src = "https://github.com/lewis6991/gitsigns.nvim" },
     { src = "https://github.com/kdheepak/lazygit.nvim" },
     { src = "https://github.com/W-Rn/chezmoi-signs.nvim" },
-    { src = "https://github.com/esmuellert/codediff.nvim" },
 }, { load = function() end, confirm = false })
 
 -- gitsigns — VimEnter
@@ -67,13 +65,5 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     once = true,
     callback = function()
         vim.cmd.packadd("chezmoi-signs.nvim")
-    end,
-})
--- codediff - <leader>tc 按键触发
-vim.api.nvim_create_autocmd("BufReadPost", {
-    once = true,
-    callback = function()
-        vim.cmd.packadd("codediff.nvim")
-        require("codediff").setup()
     end,
 })
