@@ -1,0 +1,55 @@
+{
+    "github": {
+        "prefix": "github",
+        "body": [
+            "'https://github.com/${0}',"
+        ],
+        "description": "Github url"
+    },
+    "pack": {
+        "prefix": "pack",
+        "body": [
+            "-- === ${1:插件描述} ===",
+            "",
+            "vim.pack.add(",
+            "\t{ { src = \"https://github.com/${2:<user/repo>}\" } },",
+            "\t{ load = function() end, confirm = false }",
+            ")"
+        ],
+        "description": "Neovim Native Package Loader (nvim 0.12+)"
+    },
+    "event": {
+        "prefix": "event",
+        "body": [
+            "vim.api.nvim_create_autocmd(${1:\"VimEnter\"}, {",
+            "\tonce = true,",
+            "\t${2:-- pattern = \"lua\",}",
+            "\tcallback = function()",
+            "\t\tvim.cmd.packadd(\"${3:repo-name}\")",
+            "\t\trequire(\"${3:repo-name}\").setup({",
+            "\t\t\t${0}",
+            "\t\t})",
+            "\tend,",
+            "})"
+        ],
+        "description": "Event-based lazy loading autocmd (nvim 0.12+)"
+    },
+    "key": {
+        "prefix": "key",
+        "body": [
+            "local ${1:plugin}_loaded = false",
+            "local function ensure_${1:plugin}()",
+            "\tif ${1:plugin}_loaded then return end",
+            "\t${1:plugin}_loaded = true",
+            "\tvim.cmd.packadd(\"${2:repo-name}\")",
+            "\trequire(\"${2:repo-name}\").setup({})",
+            "end",
+            "",
+            "vim.keymap.set(\"${3:n}\", \"${4:<leader>k}\", function()",
+            "\tensure_${1:plugin}()",
+            "\t${0:-- TODO}",
+            "end, { desc = \"${5:描述}\" })"
+        ],
+        "description": "Keymap-based lazy loading with guard (nvim 0.12+)"
+    }
+}
