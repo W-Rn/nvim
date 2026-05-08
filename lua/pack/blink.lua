@@ -10,6 +10,7 @@ vim.pack.add(
 
 -- 自动构建 hook：插件安装或更新后编译 Rust 二进制
 vim.api.nvim_create_autocmd("PackChanged", {
+    group = vim.api.nvim_create_augroup("blink-build", { clear = true }),
     callback = function(ev)
         if ev.data.spec.name ~= "blink.cmp" then
             return
@@ -18,7 +19,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
             return
         end
         vim.notify("Building blink.cmp (Background)...", vim.log.levels.INFO)
-        vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }, function(out)
+        vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path, text = true }, function(out)
             if out.code == 0 then
                 vim.notify("blink.cmp build success.", vim.log.levels.INFO)
             else
