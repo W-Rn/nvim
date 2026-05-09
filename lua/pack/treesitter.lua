@@ -11,13 +11,15 @@ local ensure_installed = {
     "cpp",
     "rust",
     "toml",
+    "markdown",
+    "markdown_inline",
 }
 
 require("nvim-treesitter").setup()
 require("nvim-treesitter").install(ensure_installed)
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "toml", "python", "sh", "zsh", "json", "jsonc", "c", "cpp", "rust" },
+    pattern = { "markdown", "opencode_output", "toml", "python", "sh", "zsh", "json", "jsonc", "c", "cpp", "rust" },
     callback = function(args)
         pcall(vim.treesitter.start, args.buf)
     end,
