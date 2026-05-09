@@ -40,8 +40,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 end
                 map("n", "<leader>hQ", function()
                     gitsigns.setqflist("all")
-                end)
-                map("n", "<leader>hq", gitsigns.setqflist)
+                end, { desc = "gitsigns setqflist all" })
+                map("n", "<leader>hq", gitsigns.setqflist, { desc = "gitsigns setqflist" })
             end,
         })
     end,
