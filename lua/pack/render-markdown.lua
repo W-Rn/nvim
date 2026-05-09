@@ -11,8 +11,11 @@ vim.api.nvim_create_autocmd("FileType", {
     once = true,
     pattern = { "markdown", "opencode_output" },
     callback = function()
+        -- 预注入 file_types，plugin/render-markdown.lua 启动时读取
+        vim.g.render_markdown_config = { file_types = { "markdown", "opencode_output" } }
         vim.cmd.packadd("render-markdown.nvim")
         require("render-markdown").setup({
+            file_types = { "markdown", "opencode_output" },
             callout = {
                 abstract = {
                     raw = "[!ABSTRACT]",
