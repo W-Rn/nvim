@@ -1,5 +1,5 @@
 -- ==============================================================
--- 代码补全 (blink.cmp) — InsertEnter 懒加载 + PackChanged 构建 hook
+-- 代码补全 (blink.cmp) — BufReadPost 懒加载 + PackChanged 构建 hook
 -- 构建命令（cargo build）通过 PackChanged 事件在安装/更新后自动执行
 -- ==============================================================
 
@@ -29,8 +29,8 @@ vim.api.nvim_create_autocmd("PackChanged", {
     end,
 })
 
--- 懒加载：首次进入插入模式时激活
-vim.api.nvim_create_autocmd("InsertEnter", {
+-- 懒加载：首次读取文件时激活
+vim.api.nvim_create_autocmd("BufReadPost", {
     once = true,
     callback = function()
         vim.cmd.packadd("blink.cmp")

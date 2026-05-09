@@ -29,6 +29,7 @@ require("pack.opencode")
 -- 4e. 其他事件懒加载
 -- ==============================================================
 require("pack.bufferline") -- BufReadPost
+require("pack.blink") -- BufReadPost + PackChanged 构建 hook
 require("pack.git") -- gitsigns/chezmoi(VimEnter) + lazygit(keys)
 require("pack.codediff") -- :CodeDiff 命令懒加载
 require("pack.mini") -- mini.surround/ai/diff(VimEnter) + mini.files(keys)
@@ -49,7 +50,6 @@ require("pack.harpoon")
 -- ==============================================================
 -- 4g. 文件类型 / InsertEnter 懒加载
 -- ==============================================================
-require("pack.blink") -- InsertEnter + PackChanged 构建 hook
 require("pack.lazydev") -- ft=lua
 require("pack.render-markdown") -- ft=markdown, opencode_output
 require("pack.venv-selector") -- ft=python
