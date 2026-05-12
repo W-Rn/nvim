@@ -33,7 +33,6 @@ require("pack.blink") -- BufReadPost + PackChanged 构建 hook
 require("pack.git") -- gitsigns/chezmoi(VimEnter) + lazygit(keys)
 require("pack.codediff") -- :CodeDiff 命令懒加载
 require("pack.mini") -- mini.surround/ai/diff(VimEnter) + mini.files(keys)
-require("pack.neogen") -- LspAttach
 require("pack.vim-illuminate") -- BufReadPost
 require("pack.format") -- BufWritePre
 

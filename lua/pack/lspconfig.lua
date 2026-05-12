@@ -2,12 +2,14 @@
 -- LSP 工具安装器 — VimEnter 懒加载（安装后启用 LSP 服务器）
 -- LSP Saga       — LspAttach 懒加载（仅当有 LSP 客户端附加时激活）
 -- glance         — LspAttach 懒加载（仅当有 LSP 客户端附加时激活）
+-- neogen         — LspAttach 懒加载（仅当有 LSP 客户端附加时激活）
 -- ==============================================================
 
 vim.pack.add({
     { src = "https://github.com/williamboman/mason.nvim" },
     { src = "https://github.com/DNLHC/glance.nvim" },
     { src = "https://github.com/nvimdev/lspsaga.nvim" },
+    { src = "https://github.com/danymat/neogen" },
 }, { load = function() end, confirm = false })
 
 -- mason
@@ -97,6 +99,31 @@ local function ensure_lspsaga()
     })
 end
 
+-- neogen
+local neogen_loaded = false
+local function ensure_neogen()
+    if neogen_loaded then
+        return
+    end
+    neogen_loaded = true
+    vim.cmd.packadd("neogen")
+    require("neogen").setup({
+        enabled = true,
+        languages = {
+            lua = {
+                template = {
+                    annotation_convention = "emmylua",
+                },
+            },
+            python = {
+                template = {
+                    annotation_convention = "reST",
+                },
+            },
+        },
+    })
+end
+
 vim.diagnostic.config({
     update_in_insert = false,
     virtual_text = { spacing = 2, prefix = "●" },
@@ -137,6 +164,7 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
     callback = function(args)
+        ensure_neogen()
         ensure_lspsaga()
         ensure_glance()
         -- 通用 LSP 快捷键
@@ -158,6 +186,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         keymap("n", "<leader>gi", "<CMD>Glance implementations<CR>", "Lsp Implementations")
         keymap({ "n", "x" }, "<leader>ga", vim.lsp.buf.code_action, "LSP :Code Action")
         keymap({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, "LSP :Signature Help")
+        keymap("i", "<C-n>", "<cmd>lua require('neogen').jump_next()<CR>", "Neogen: Jump next")
+        keymap("i", "<C-p>", "<cmd>lua require('neogen').jump_prev()<CR>", "Neogen: Jump prev")
+        keymap("n", "<leader>cn", "<cmd>lua require('neogen').generate()<CR>", "Neogen: Generate")
         -- stylua: ignore end
     end,
 })
