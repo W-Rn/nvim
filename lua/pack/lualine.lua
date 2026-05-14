@@ -29,8 +29,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
         local separators = {
             left = "",
             right = "",
-            theme_left = "",
-            theme_right = "",
+            theme_left = " ",
+            theme_right = " ",
         }
 
         local conditions = {
@@ -118,7 +118,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 }
                 return { fg = mode_color[vim.fn.mode()], gui = "bold" }
             end,
-            padding = { left = 1, right = 1 },
+            padding = { left = 0, right = 1 },
         })
 
         ins_left({
@@ -235,7 +235,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
         ins_right({
             "progress",
             color = { fg = colors.fg, gui = "bold" },
-            padding = { left = 1, right = 1 },
+            padding = { left = 1, right = 0 },
         })
 
         ins_right({
@@ -243,7 +243,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 return separators.theme_right
             end,
             color = { fg = colors.blue },
-            padding = { left = 1, right = 1 },
+            padding = { left = 0, right = 0 },
         })
 
         lualine.setup(opts)
