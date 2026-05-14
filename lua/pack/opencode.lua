@@ -12,11 +12,13 @@ vim.api.nvim_create_autocmd("VimEnter", {
             keymap_prefix = "<leader>o",
             keymap = {
                 input_window = {
+                    ["<esc>"] = false,
                     ["<M-m>"] = { "toggle_pane", mode = { "n", "i" }, defer_to_completion = true },
                     ["<tab>"] = { "switch_mode", mode = { "n" } },
                 },
                 output_window = {
                     ["<tab>"] = false,
+                    ["<esc>"] = false,
                     ["<M-m>"] = { "toggle_pane", mode = { "n", "i" } },
                 },
                 session_picker = {
