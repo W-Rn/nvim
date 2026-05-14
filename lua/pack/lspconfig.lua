@@ -189,6 +189,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         keymap("i", "<C-n>", "<cmd>lua require('neogen').jump_next()<CR>", "Neogen: Jump next")
         keymap("i", "<C-p>", "<cmd>lua require('neogen').jump_prev()<CR>", "Neogen: Jump prev")
         keymap("n", "<leader>cn", "<cmd>lua require('neogen').generate()<CR>", "Neogen: Generate")
+        keymap("n", "<leader>gh", function()
+            local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = args.buf })
+            vim.lsp.inlay_hint.enable(not enabled, { bufnr = args.buf })
+            vim.notify("Inlay hints " .. (enabled and "disabled" or "enabled"), vim.log.levels.INFO)
+        end, "Toggle inlay hints")
         -- stylua: ignore end
     end,
 })
