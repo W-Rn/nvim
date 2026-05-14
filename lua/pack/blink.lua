@@ -30,17 +30,10 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 -- 懒加载：首次读取文件时激活
-vim.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     once = true,
     callback = function()
         vim.cmd.packadd("blink.cmp")
-        vim.api.nvim_set_hl(0, "BlinkCmpSource", { fg = "#DA70D6" })
-        vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#4682B4" })
-        vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#708090" })
-        vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#4682B4" })
-        vim.api.nvim_set_hl(0, "BlinkCmpDocSeparator", { fg = "#4682B4" })
-        vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#4682B4" })
-        vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpActiveParameter", { bg = "#1F4F42", bold = true })
         require("blink.cmp").setup({
             enabled = function()
                 return not vim.tbl_contains({ "text" }, vim.bo.filetype)
@@ -162,5 +155,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                 },
             },
         })
+        vim.api.nvim_set_hl(0, "BlinkCmpSource", { fg = "#DA70D6" })
+        vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#4682B4" })
+        vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#708090" })
+        vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#4682B4" })
+        vim.api.nvim_set_hl(0, "BlinkCmpDocSeparator", { fg = "#4682B4" })
+        vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#4682B4" })
+        vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpActiveParameter", { bg = "#1F4F42", bold = true })
     end,
 })
