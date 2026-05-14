@@ -4,7 +4,7 @@
 
 vim.pack.add({ { src = "https://github.com/akinsho/bufferline.nvim" } }, { load = function() end, confirm = false })
 
-vim.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     once = true,
     callback = function()
         vim.cmd.packadd("bufferline.nvim")
@@ -55,6 +55,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
                     },
                 },
                 tab_size = 10,
+                left_mouse_command = function(id)
+                    if vim.tbl_contains({ "opencode", "opencode_output" }, vim.bo.filetype) then
+                        return
+                    end
+                    vim.api.nvim_set_current_buf(id)
+                end,
             },
             highlights = {
                 buffer_selected = {
