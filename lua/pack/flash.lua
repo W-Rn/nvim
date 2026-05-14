@@ -37,17 +37,11 @@ vim.keymap.set({ "n", "x", "o" }, "<leader>l", function()
     require("flash").treesitter()
 end, { desc = "Flash treesitter" })
 
-vim.keymap.set({ "x", "n", "c" }, "<c-f>", function()
-    ensure_flash()
-    require("flash").toggle()
-end, { desc = "Flash toggle" })
-
 vim.keymap.set({ "n", "x", "o" }, "<leader>J", function()
     ensure_flash()
     require("flash").jump({
         search = { mode = "search", max_length = 0 },
-        label = { after = { 0, 0 }, matches = false },
-        jump = { pos = "end" },
-        pattern = "^\\s*\\S\\?",
+        label = { after = { 0, 0 } },
+        pattern = "^",
     })
 end, { desc = "Flash jump end" })
