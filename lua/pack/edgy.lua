@@ -23,9 +23,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
                     title = "Terminal",
                     ft = "toggleterm",
                     pinned = false,
-                    open = function()
-                        require("toggleterm").toggle()
-                    end,
+                    -- open = function()
+                    --     require("toggleterm").toggle()
+                    -- end,
                     wo = { winbar = true },
                 },
                 {
