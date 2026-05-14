@@ -18,9 +18,14 @@ local function ensure_neotree()
             position = "left",
             width = 40,
             mappings = {
+                ["S"] = "none",
+                ["s"] = "none",
                 ["<cr>"] = "none",
+                ["n"] = function() end,
                 ["h"] = "close_node",
                 ["l"] = "open",
+                ["\\"] = "open_split",
+                ["|"] = "open_vsplit",
             },
         },
     })
