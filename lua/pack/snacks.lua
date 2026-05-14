@@ -4,10 +4,7 @@
 
 vim.pack.add({ { src = "https://github.com/folke/snacks.nvim" } }, { confirm = false })
 
-vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { bg = "#313244" })
-
 require("snacks").setup({
-
     words = { enabled = false },
     explorer = { enabled = false },
     bigfile = { enabled = true, size = 3000 * 1024, line_length = 100 },
@@ -186,6 +183,8 @@ vim.api.nvim_create_autocmd("LspProgress", {
         })
     end,
 })
+
+vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { bg = "#313244" })
 
 vim.api.nvim_create_autocmd("VimEnter", {
     once = true,
