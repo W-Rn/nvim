@@ -77,7 +77,6 @@ vim.o.pumheight = 10
 vim.o.showtabline = 2
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.o.showmode = false
-vim.o.conceallevel = 2
 -- 复制粘贴联通系统粘贴板
 vim.o.clipboard = "unnamedplus"
 vim.o.undofile = true

@@ -188,7 +188,12 @@ vim.api.nvim_create_autocmd("FileType", {
                 disabled_modes = { "n" },
                 ignore = { bullet = true, head_border = true, head_background = true },
             },
-            win_options = { concealcursor = { rendered = "nvc" } },
+            win_options = {
+                concealcursor = { rendered = "nvc" },
+                conceallevel = {
+                    default = 2,
+                },
+            },
             completions = {
                 blink = { enabled = true },
                 lsp = { enabled = true },
