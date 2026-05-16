@@ -4,7 +4,7 @@
 
 vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } }, { load = function() end, confirm = false })
 
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     once = true,
     callback = function()
         vim.cmd.packadd("which-key.nvim")
@@ -15,9 +15,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 width = 0.5,
             },
             spec = {
-                { "<leader>n", group = "<Noice>" },
-                { "<leader>t", group = "<telescope>" },
-                { "<leader>b", group = "<BuffeeLine>" },
+                { "<leader>n", group = "<Snacks Notifications>" },
+                { "<leader>f", group = "<Snacks Find>" },
+                { "<leader>s", group = "<Snacks>" },
+                { "<leader>b", group = "<BufferLine>" },
+                { "<leader>g", group = "<LSP>" },
+                { "<leader>r", group = "<LSP Rename>/Restart" },
                 { "z", group = "<fold>" },
                 { "<leader>o", group = "<opencode>" },
                 { "<leader>t", group = "<tree>" },
