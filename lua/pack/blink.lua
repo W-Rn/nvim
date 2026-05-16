@@ -1,33 +1,11 @@
 -- ==============================================================
--- 代码补全 (blink.cmp) — BufReadPost 懒加载 + PackChanged 构建 hook
--- 构建命令（cargo build）通过 PackChanged 事件在安装/更新后自动执行
+-- 代码补全 (blink.cmp) — BufReadPost 懒加载
 -- ==============================================================
 
 vim.pack.add(
     { { src = "https://github.com/saghen/blink.cmp", version = "v1.8.0" } },
     { load = function() end, confirm = false }
 )
-
--- 自动构建 hook：插件安装或更新后编译 Rust 二进制
-vim.api.nvim_create_autocmd("PackChanged", {
-    group = vim.api.nvim_create_augroup("blink-build", { clear = true }),
-    callback = function(ev)
-        if ev.data.spec.name ~= "blink.cmp" then
-            return
-        end
-        if ev.data.kind ~= "install" and ev.data.kind ~= "update" then
-            return
-        end
-        vim.notify("Building blink.cmp (Background)...", vim.log.levels.INFO)
-        vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path, text = true }, function(out)
-            if out.code == 0 then
-                vim.notify("blink.cmp build success.", vim.log.levels.INFO)
-            else
-                vim.notify("blink.cmp build failed: " .. (out.stderr or "Unknown"), vim.log.levels.ERROR)
-            end
-        end)
-    end,
-})
 
 -- 懒加载：首次读取文件时激活
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
