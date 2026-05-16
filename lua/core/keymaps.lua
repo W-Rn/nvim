@@ -60,6 +60,7 @@ vim.keymap.set("v", "<A-s>", ":m '>+1<CR>gv=gv", { desc = "向下移动选中块
 vim.keymap.set("v", "<A-w>", ":m '<-2<CR>gv=gv", { desc = "向上移动选中块", silent = true })
 vim.keymap.set("i", "<A-s>", "<Esc><Cmd>m .+1<CR>==gi", { desc = "向下移动当前行" })
 vim.keymap.set("i", "<A-w>", "<Esc><Cmd>m .-2<CR>==gi", { desc = "向上移动当前行" })
+vim.keymap.set("n", "<leader>re", "<Cmd>restart<CR>", { desc = "重启Neovim", noremap = true, silent = true })
 
 -- Undotree — 特殊窗口中禁止打开
 local undotree_blocked = { "codediff-explorer", "qf", "neo-tree", "Outline", "neo-tree-popup", "toggleterm" }
