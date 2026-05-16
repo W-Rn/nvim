@@ -18,6 +18,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 },
             },
             health = { checker = false },
+            notify = {
+                enabled = false,
+            },
             lsp = {
                 progress = { enabled = false },
                 hover = { enabled = true, opts = { scrollbar = false } },
@@ -39,8 +42,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 all = { view = "popup" },
             },
         })
-
-        vim.keymap.set("n", "<leader>na", "<Cmd>NoiceAll<CR>", { desc = "[Noice] Show All messages" })
-        vim.keymap.set("n", "<leader>ne", "<Cmd>NoiceError<CR>", { desc = "[Noice] Show Error messages" })
     end,
 })

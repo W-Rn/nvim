@@ -126,7 +126,6 @@ require("snacks").setup({
 vim.keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "[Snacks] Smart Find Files" })
 vim.keymap.set("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "[Snacks] Delete Buffer" })
 vim.keymap.set("n", "<leader>bD", function() Snacks.bufdelete.other() end, { desc = "[Snacks] Delete Other Buffers" })
-vim.keymap.set("n", "<leader>nh", function() Snacks.notifier.show_history() end, { desc = "[Snacks] Notification history" })
 vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "[Snacks] Find Buffers" })
 vim.keymap.set("n", "<leader>fc", function() Snacks.picker.files { cwd = vim.fn.stdpath "config" } end, { desc = "[Snacks] Find Config" })
 vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "[Snacks] Find Files" })
@@ -142,6 +141,8 @@ vim.keymap.set("n", "<leader>sH", function() Snacks.picker.highlights() end, { d
 vim.keymap.set("n", "<leader>sm", function() Snacks.picker.marks() end, { desc = "[Snacks] Marks" })
 vim.keymap.set("n", "<leader>sp", function() Snacks.picker.spelling { layout = "select" } end, { desc = "[Snacks] Spelling" })
 vim.keymap.set({ "n", "t" }, "<A-i>", function() Snacks.terminal() end, { desc = "[Snacks] Toggle terminal" })
+vim.keymap.set("n", "<leader>na", function() Snacks.notifier.show_history() end, { desc = "[Snacks] Show All notifications" })
+vim.keymap.set("n", "<leader>ne", function() Snacks.notifier.show_history({ filter = vim.log.levels.ERROR }) end, { desc = "[Snacks] Show Error notifications" })
 -- stylua: ignore end
 
 -- LSP 进度通知
