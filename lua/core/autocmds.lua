@@ -51,3 +51,22 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.relativenumber = false
     end,
 })
+-- 插件安装/更新后自动构建
+vim.api.nvim_create_autocmd("PackChanged", {
+    group = vim.api.nvim_create_augroup("pack-build", { clear = true }),
+    callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if kind ~= "install" and kind ~= "update" then return end
+
+        if name == "peek.nvim" then
+            vim.notify("Building peek.nvim (Background)...", vim.log.levels.INFO)
+            vim.system({ "deno", "task", "--quiet", "build:fast" }, { cwd = ev.data.path, text = true }, function(out)
+                if out.code == 0 then
+                    vim.notify("peek.nvim build success.", vim.log.levels.INFO)
+                else
+                    vim.notify("peek.nvim build failed: " .. (out.stderr or "Unknown"), vim.log.levels.ERROR)
+                end
+            end)
+        end
+    end,
+})

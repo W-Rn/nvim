@@ -45,6 +45,7 @@ require("pack.neo-tree")
 require("pack.toggleterm")
 require("pack.outline")
 require("pack.harpoon")
+require("pack.peek")
 
 -- ==============================================================
 -- 4g. 文件类型 / InsertEnter 懒加载
