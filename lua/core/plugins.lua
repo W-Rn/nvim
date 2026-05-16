@@ -45,7 +45,6 @@ require("pack.neo-tree")
 require("pack.toggleterm")
 require("pack.outline")
 require("pack.harpoon")
-require("pack.peek")
 
 -- ==============================================================
 -- 4g. 文件类型 / InsertEnter 懒加载
@@ -53,6 +52,7 @@ require("pack.peek")
 require("pack.lazydev") -- ft=lua
 require("pack.render-markdown") -- ft=markdown, opencode_output
 require("pack.venv-selector") -- ft=python
+require("pack.peek") -- ft=markdown
 
 -- ==============================================================
 -- 4h. 工具插件（多事件混合懒加载）
