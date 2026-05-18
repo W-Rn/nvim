@@ -173,11 +173,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
         -- stylua: ignore start
         keymap("n", "<leader>gq", vim.diagnostic.setqflist, "诊断到 quickfix")
-        keymap("n", "[d", function() vim.diagnostic.jump { count = -1 } end, "上一个诊断")
-        keymap("n", "]d", function() vim.diagnostic.jump { count = 1 } end, "下一个诊断")
-        keymap("n", "[e", function() vim.diagnostic.jump { count = -1, severity = vim.diagnostic.severity.ERROR } end, "上一个错误")
-        keymap("n", "]e", function() vim.diagnostic.jump { count = 1, severity = vim.diagnostic.severity.ERROR } end, "下一个错误")
-        keymap("n", "<leader>d", vim.diagnostic.open_float, "LSP : Diagnostic Float")
+        keymap("n", "[d", vim.diagnostic.goto_prev, "上一个诊断")
+        keymap("n", "]d", vim.diagnostic.goto_next, "下一个诊断")
+        keymap("n", "<leader>go", vim.diagnostic.open_float, "LSP : Diagnostic Float")
         keymap("n", "<leader>gk", vim.lsp.buf.hover, "LSP : Hover")
         keymap("n", "<leader>rn", vim.lsp.buf.rename, "LSP :Rename")
         keymap("n", "<leader>gd", "<CMD>Glance definitions<CR>", "Lsp : definitions")
