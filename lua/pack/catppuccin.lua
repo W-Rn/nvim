@@ -22,7 +22,7 @@ require("catppuccin").setup({
     },
 })
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-nvim")
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "#4682B4" })
 vim.api.nvim_set_hl(0, "FloatTitle", { bg = "none", fg = "#FCA561" })
