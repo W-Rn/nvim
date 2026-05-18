@@ -103,8 +103,8 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
                     max_height = 40,
                     draw = {
                         columns = {
-                            { "label", "label_description", gap = 1 },
                             { "kind_icon" },
+                            { "label", "label_description", gap = 1 },
                             { "kind" },
                             { "source_name" },
                         },
@@ -135,7 +135,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
         })
         vim.api.nvim_set_hl(0, "BlinkCmpSource", { fg = "#DA70D6" })
         vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#4682B4" })
-        vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#708090" })
+        -- vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { bg = "#708090" })
         vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#4682B4" })
         vim.api.nvim_set_hl(0, "BlinkCmpDocSeparator", { fg = "#4682B4" })
         vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { fg = "#4682B4" })
