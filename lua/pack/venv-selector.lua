@@ -18,10 +18,6 @@ vim.api.nvim_create_autocmd("FileType", {
                 picker = "snacks",
             },
             search = {
-                workspace = {
-                    command = "fd '/bin/python$' . -H -E .git --full-path --color never",
-                    type = "workspace",
-                },
                 system_python = {
                     command = "fd '/python3$' /usr/bin/ --full-path --color never",
                     type = "system",
