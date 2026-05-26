@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: unused-local
 local schemas_ = require("schemastore").json.schemas({
     extra = {
         {
