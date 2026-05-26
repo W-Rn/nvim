@@ -61,9 +61,10 @@ vim.keymap.set("n", "<c-g>", function()
 end, { desc = "LazyGit" })
 
 -- chezmoi-signs — VimEnter
-vim.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     once = true,
     callback = function()
         vim.cmd.packadd("chezmoi-signs.nvim")
+        vim.cmd("ChezmoiSignsRefresh")
     end,
 })
