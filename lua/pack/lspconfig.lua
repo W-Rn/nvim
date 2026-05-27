@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
             "lua-language-server",      "stylua",
             "clangd",                   "clang-format",
             "json-lsp",                 "jq",
+            "deno",
         }
         -- stylua: ignore end
 
