@@ -1,6 +1,5 @@
 vim.pack.add({
     { src = "https://github.com/stevearc/oil.nvim" },
-    { src = "https://github.com/W-Rn/oil-git-signs.nvim" },
 }, { load = function() end, confirm = false })
 
 function _G.get_oil_winbar()
@@ -20,7 +19,6 @@ local function ensure_oil()
     local detail = false
     oil_loaded = true
     vim.cmd.packadd("oil.nvim")
-    vim.cmd.packadd("oil-git-signs.nvim")
     require("oil").setup({
         default_file_explorer = true,
         keymaps = {
@@ -53,7 +51,6 @@ local function ensure_oil()
         use_default_keymaps = false,
         win_options = {
             winbar = "%!v:lua.get_oil_winbar()",
-            signcolumn = "yes:2",
         },
         float = {
             border = "rounded",
